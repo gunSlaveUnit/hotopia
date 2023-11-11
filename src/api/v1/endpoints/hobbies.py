@@ -8,7 +8,7 @@ from src.api.v1.schemas.hobbies import HobbyBaseSchema, HobbyDBSchema
 router = APIRouter(prefix=HOBBIES_ROUTER_PREFIX)
 
 
-@router.get('/', response_model=List[HobbyBaseSchema])
+@router.get('/', response_model=List[HobbyDBSchema])
 async def items():
     return [
         {
