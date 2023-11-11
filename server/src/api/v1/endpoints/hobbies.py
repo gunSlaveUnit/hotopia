@@ -2,8 +2,8 @@ from typing import List
 
 from fastapi import APIRouter
 
-from src.settings import HOBBIES_ROUTER_PREFIX
-from src.api.v1.schemas.hobbies import HobbyBaseSchema, HobbyDBSchema
+from server.src.api.v1.schemas.hobbies import HobbyDBSchema
+from server.src.settings import HOBBIES_ROUTER_PREFIX
 
 router = APIRouter(prefix=HOBBIES_ROUTER_PREFIX)
 
