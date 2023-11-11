@@ -10,7 +10,7 @@ async def items():
     return [
         {
             "id": 0,
-            "name": "Strikeball",
+            "name": "Airsoft",
         },
         {
             "id": 1,
