@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from settings import HOBBIES_ROUTER_PREFIX
+from src.settings import HOBBIES_ROUTER_PREFIX
 
 router = APIRouter(prefix=HOBBIES_ROUTER_PREFIX)
 
