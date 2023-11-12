@@ -1,8 +1,11 @@
 from typing import List
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from server.src.api.v1.schemas.hobbies import HobbyDBSchema
+from core.models.hobbies import Hobby
+from core.utils.db import get_db
+from server.src.api.v1.schemas.hobbies import HobbyDBSchema, HobbyCreateSchema
 from server.src.settings import HOBBIES_ROUTER_PREFIX
 
 router = APIRouter(prefix=HOBBIES_ROUTER_PREFIX)
@@ -34,3 +37,11 @@ async def item(item_id: int):
         "updated_at": None,
         "name": "some_hobby",
     }
+
+
+@router.post('/')
+async def create(
+        data: HobbyCreateSchema,
+        db: AsyncSession = Depends(get_db)
+):
+    return await Hobby.create(db, data)
