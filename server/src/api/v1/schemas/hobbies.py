@@ -7,6 +7,10 @@ class HobbyBaseSchema(BaseModel):
     name: str
 
 
-class HobbyDBSchema(HobbyBaseSchema, EntityDBSchema):
+class HobbyCreateSchema(HobbyBaseSchema):
+    pass
+
+
+class HobbyDBSchema(HobbyCreateSchema, EntityDBSchema):
     class Config:
         from_attributes = True
