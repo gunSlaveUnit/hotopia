@@ -10,6 +10,11 @@ class Base(DeclarativeBase, AsyncAttrs):
     pass
 
 
+async def create():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
+
 async def get_db() -> AsyncSession:
     session_maker = async_sessionmaker(
         bind=engine,
