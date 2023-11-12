@@ -1,8 +1,13 @@
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession, AsyncEngine
+from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncAttrs, AsyncSession, AsyncEngine
 
 engine: AsyncEngine = create_async_engine(
     "postgresql+asyncpg://postgres:postgres@localhost:5432/hotopia"
 )
+
+
+class Base(DeclarativeBase, AsyncAttrs):
+    pass
 
 
 async def get_db() -> AsyncSession:
