@@ -39,7 +39,7 @@ async def item(item_id: int):
     }
 
 
-@router.post('/')
+@router.post('/', response_model=HobbyDBSchema)
 async def create(
         data: HobbyCreateSchema,
         db: AsyncSession = Depends(get_db)
