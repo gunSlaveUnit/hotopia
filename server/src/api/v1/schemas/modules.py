@@ -15,4 +15,6 @@ class ModuleCreateSchema(ModuleBaseSchema):
     pass
 
 
-
+class ModuleDBSchema(ModuleCreateSchema, EntityDBSchema):
+    class Config:
+        from_attributes = True
