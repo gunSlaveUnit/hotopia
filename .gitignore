@@ -1,2 +1,4 @@
 .idea/
-/server/venv/
+server/venv/
+client/node_modules/
+client/.expo/
