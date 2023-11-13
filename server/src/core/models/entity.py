@@ -1,6 +1,7 @@
 import datetime
+from typing import AsyncIterator
 
-from sqlalchemy import func
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -13,6 +14,12 @@ class Entity(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     created_at: Mapped[datetime.datetime] = mapped_column(server_default=func.now())
     updated_at: Mapped[datetime.datetime] = mapped_column(server_default=None, onupdate=func.now(), nullable=True)
+
+    @classmethod
+    async def every(cls, session: AsyncSession) -> AsyncIterator:
+        scalars = await session.stream_scalars(select(cls))
+        async for scalar in scalars:
+            yield scalar
 
     @classmethod
     async def create(cls, session: AsyncSession, data):
