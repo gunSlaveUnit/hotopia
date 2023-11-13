@@ -9,3 +9,10 @@ class ModuleBaseSchema(BaseModel):
     done: bool
     hobby: int
     previous_module: int | None
+
+
+class ModuleCreateSchema(ModuleBaseSchema):
+    pass
+
+
+
