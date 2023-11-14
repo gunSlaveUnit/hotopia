@@ -11,5 +11,5 @@ class Unit(Entity):
     experience_amount: Mapped[int]
     duration: Mapped[int]
 
-    module: Mapped[int] = mapped_column("module_id", ForeignKey("modules.id"))
-    previous_unit: Mapped[int] = mapped_column("unit_id", ForeignKey("units.id"), nullable=True)
+    module_id: Mapped[int] = mapped_column("module_id", ForeignKey("modules.id"))
+    previous_unit_id: Mapped[int] = mapped_column("unit_id", ForeignKey("units.id"), nullable=True)
