@@ -3,10 +3,13 @@ from pydantic import BaseModel
 from server.src.api.v1.schemas.entity import EntityDBSchema
 
 
-class WalkthroughBaseSchema(BaseModel):
+class WalkthroughUpdateSchema(BaseModel):
+    done: bool
+
+
+class WalkthroughBaseSchema(WalkthroughUpdateSchema):
     user: int
     unit: int
-    done: bool
 
 
 class WalkthroughCreateSchema(WalkthroughBaseSchema):
