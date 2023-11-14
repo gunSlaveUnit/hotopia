@@ -9,7 +9,6 @@ class Module(Entity):
 
     name: Mapped[str]
     description: Mapped[str]
-    done: Mapped[bool]
 
     hobby: Mapped[int] = mapped_column("hobby_id", ForeignKey("hobbies.id"))
     previous_module: Mapped[int] = mapped_column("module_id", ForeignKey("modules.id"), nullable=True)
