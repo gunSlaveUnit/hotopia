@@ -3,6 +3,9 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from core.models.entity import Entity
 
+# Don't touch this import, it needs for user mapping
+from core.models import users
+
 
 class Walkthrough(Entity):
     __tablename__ = "walkthroughes"
