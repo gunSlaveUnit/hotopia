@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -16,14 +16,9 @@ async def items(db: AsyncSession = Depends(get_db)) -> List[Hobby]:
     return [_ async for _ in Hobby.every(db)]
 
 
-@router.get('/{item_id}', response_model=HobbyDBSchema)
-async def item(item_id: int):
-    return {
-        "id": item_id,
-        "created_at": 1699701695,
-        "updated_at": None,
-        "name": "some_hobby",
-    }
+@router.get('/{item_id}', response_model=Optional[HobbyDBSchema])
+async def item(item_id: int, db: AsyncSession = Depends(get_db)) -> Optional[Hobby]:
+    return await Hobby.by_id(db, item_id)
 
 
 @router.post('/', response_model=HobbyDBSchema)
