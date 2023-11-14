@@ -10,6 +10,7 @@ class Unit(Entity):
     name: Mapped[str]
     done: Mapped[bool]
     experience_amount: Mapped[int]
+    duration: Mapped[int]
 
     module: Mapped[int] = mapped_column("module_id", ForeignKey("modules.id"))
     previous_unit: Mapped[int] = mapped_column("unit_id", ForeignKey("units.id"), nullable=True)

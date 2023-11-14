@@ -7,6 +7,7 @@ class UnitBaseSchema(BaseModel):
     name: str
     done: bool
     experience_amount: int
+    duration: int
     module: int
     previous_unit: int | None
 
