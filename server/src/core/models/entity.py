@@ -1,5 +1,5 @@
 import datetime
-from typing import AsyncIterator
+from typing import AsyncIterator, Optional
 
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -20,6 +20,10 @@ class Entity(Base):
         scalars = await session.stream_scalars(select(cls))
         async for scalar in scalars:
             yield scalar
+
+    @classmethod
+    async def by_id(cls, session: AsyncSession, item_id: int) -> Optional:
+        return await session.scalar(select(cls).where(cls.id == item_id))
 
     @classmethod
     async def create(cls, session: AsyncSession, data):
