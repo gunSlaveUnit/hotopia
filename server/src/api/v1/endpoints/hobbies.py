@@ -30,5 +30,5 @@ async def item(item_id: int):
 async def create(
         data: HobbyCreateSchema,
         db: AsyncSession = Depends(get_db)
-):
+) -> Hobby:
     return await Hobby.create(db, data)
