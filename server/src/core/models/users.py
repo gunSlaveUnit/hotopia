@@ -21,3 +21,7 @@ class User(Entity):
     @staticmethod
     async def by_email(session: AsyncSession, email: str) -> Optional:
         return await session.scalar(select(User).where(User.email == email))
+
+    @staticmethod
+    async def by_account_name(session: AsyncSession, account_name: str) -> Optional:
+        return await session.scalar(select(User).where(User.account_name == account_name))
