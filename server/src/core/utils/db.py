@@ -1,3 +1,4 @@
+import redis
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncAttrs, AsyncSession, AsyncEngine
 
@@ -27,3 +28,11 @@ async def get_db() -> AsyncSession:
             yield session
         finally:
             await session.close()
+
+
+async def get_session_storage():
+    storage = redis.asyncio.Redis()
+    try:
+        yield storage
+    finally:
+        await storage.aclose()
