@@ -33,3 +33,13 @@ class Entity(Base):
             session.add(item)
             await session.flush()
             return item
+
+    async def update(self, session: AsyncSession, data):
+        for attribute, value in data.items():
+            if hasattr(self, attribute):
+                setattr(self, attribute, value)
+            else:
+                raise AttributeError("The attribute to update does not exist in the source object")
+
+        await session.commit()
+        return await session.refresh(self)
