@@ -9,8 +9,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from starlette.responses import JSONResponse
 
 from core.models.users import User
+from core.utils.auth import authenticate_user
 from settings import AUTH_ROUTER_PREFIX, SESSION_TTL
-from core.utils.crypt import get_password_hash, authenticate_user
+from server.src.core.utils.crypt import get_password_hash
 from api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
 from core.utils.db import get_db, get_session_storage
 
