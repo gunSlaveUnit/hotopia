@@ -74,7 +74,7 @@ async def sign_in(
 
     session_id = str(uuid.uuid4())
     await session_storage.set(session_id, user.id)
-    session_storage.expire(session_id, SESSION_TTL)
+    await session_storage.expire(session_id, SESSION_TTL)
 
     response = JSONResponse({"detail": "Logged in successfully"})
     response.set_cookie("session", session_id, max_age=SESSION_TTL)
