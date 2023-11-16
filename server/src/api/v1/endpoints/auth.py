@@ -79,6 +79,6 @@ async def sign_in(
     response = JSONResponse({"detail": "Logged in successfully"})
     response.set_cookie("session", session_id, max_age=SESSION_TTL)
 
-    await user.update(db, {"login_at": datetime.datetime.now().timestamp()})
+    await user.update(db, {"login_at": datetime.datetime.now()})
 
     return response
