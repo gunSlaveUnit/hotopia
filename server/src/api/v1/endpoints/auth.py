@@ -39,10 +39,12 @@ async def sign_up(
             detail="User with the same account name already exists"
         )
 
+    user_number_displayed_name = await db.scalar(select(func.count(User.id)))
+
     user = User(
         email=data.email,
         account_name=data.account_name,
-        displayed_name=f'User #{select(func.count(User.id))}',
+        displayed_name=f'User #{user_number_displayed_name}',
         password=get_password_hash(data.password),
         is_active=True,
     )
