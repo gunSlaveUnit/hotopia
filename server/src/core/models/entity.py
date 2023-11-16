@@ -27,12 +27,12 @@ class Entity(Base):
 
     @classmethod
     async def create(cls, session: AsyncSession, data):
-        item = cls(**vars(data))
+        item = cls(**data.dict())
 
-        async with session.begin():
-            session.add(item)
-            await session.flush()
-            return item
+        session.add(item)
+        await session.flush()
+
+        return item
 
     async def update(self, session: AsyncSession, data):
         for attribute, value in data.items():
@@ -43,3 +43,10 @@ class Entity(Base):
 
         await session.commit()
         return await session.refresh(self)
+
+    def dict(self) -> dict:
+        """
+        Model attributes excluding SQLAlchemy attributes
+        :return: dict without SQLAlchemy attributes
+        """
+        return {k: v for (k, v) in self.__dict__.items() if '_sa_' != k[:4]}
