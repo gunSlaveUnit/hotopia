@@ -10,7 +10,5 @@ from core.models import users
 class Walkthrough(Entity):
     __tablename__ = "walkthroughes"
 
-    done: Mapped[bool]
-
     user_id: Mapped[int] = mapped_column("user_id", ForeignKey("users.id"))
     unit_id: Mapped[int] = mapped_column("unit_id", ForeignKey("units.id"))

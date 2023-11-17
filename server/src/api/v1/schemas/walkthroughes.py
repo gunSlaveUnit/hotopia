@@ -3,11 +3,7 @@ from pydantic import BaseModel
 from server.src.api.v1.schemas.entity import EntityDBSchema
 
 
-class WalkthroughUpdateSchema(BaseModel):
-    done: bool
-
-
-class WalkthroughBaseSchema(WalkthroughUpdateSchema):
+class WalkthroughBaseSchema(BaseModel):
     user: int
     unit: int
 
