@@ -7,6 +7,10 @@ class SignInView(Screen):
     pass
 
 
+class SignUpView(Screen):
+    pass
+
+
 ROOT_WIDGET = Builder.load_file("main.kv")
 
 
