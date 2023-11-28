@@ -1,5 +1,11 @@
 from kivy.app import App
 from kivy.lang import Builder
+from kivy.uix.screenmanager import Screen
+
+
+class SignInView(Screen):
+    pass
+
 
 ROOT_WIDGET = Builder.load_file("main.kv")
 
