@@ -9,13 +9,15 @@ ViewManager:
         cols: 2
 
         Label:
-            text: "Already have an account?"
+            text: "Don’t have an account?"
 
         Button:
-            text: "Login to existing account"
+            text: "Create a new account"
             on_release:
                 app.root.current = "sign_up_view"
                 root.manager.transition.direction = "left"
+
+
 
 <SignUpView>:
     name: "sign_up_view"
@@ -24,10 +26,10 @@ ViewManager:
         cols: 2
 
         Label:
-            text: "Don’t have an account?"
+            text: "Already have an account?"
 
         Button:
-            text: "Create a new account"
+            text: "Login to existing account"
             on_release:
                 app.root.current = "sign_in_view"
                 root.manager.transition.direction = "right"
