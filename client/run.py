@@ -15,12 +15,10 @@ class SignUpView(Screen):
     pass
 
 
-ROOT_WIDGET = Builder.load_file("main.kv")
-
-
 class Hotopia(App):
     def build(self):
-        return ROOT_WIDGET
+        root_widget = Builder.load_file("main.kv")
+        return root_widget
 
 
 if __name__ == '__main__':
