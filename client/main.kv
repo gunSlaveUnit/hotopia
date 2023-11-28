@@ -1,7 +1,9 @@
 ViewManager:
-    SignInView:
-    SignUpView:
-    Base:
+    SignInView
+    SignUpView
+    Home
+    Explore
+    Profile
 
 <SignInView>:
     name: "sign_in_view"
@@ -24,7 +26,7 @@ ViewManager:
         Button:
             text: "Log in"
             on_release:
-                app.root.current = "base"
+                app.root.current = "home"
                 root.manager.transition.direction = "up"
 
         GridLayout:
@@ -73,7 +75,7 @@ ViewManager:
         Button:
             text: "Create a new account"
             on_release:
-                app.root.current = "base"
+                app.root.current = "home"
                 root.manager.transition.direction = "up"
 
         GridLayout:
@@ -88,5 +90,54 @@ ViewManager:
                     app.root.current = "sign_in_view"
                     root.manager.transition.direction = "right"
 
-<Base>:
-    name: "base"
+<Menu>:
+    GridLayout:
+        cols: 3
+
+        Button:
+            text: "Home"
+            on_release:
+                app.root.current = "home"
+
+        Button:
+            text: "Explore"
+            on_release:
+                app.root.current = "explore"
+
+        Button:
+            text: "Profile"
+            on_release:
+                app.root.current = "profile"
+
+<Home>:
+    name: "home"
+
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            text: "Home"
+
+        Menu
+
+<Explore>:
+    name: "explore"
+
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            text: "Explore"
+
+        Menu
+
+<Profile>:
+    name: "profile"
+
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            text: "Profile"
+
+        Menu
