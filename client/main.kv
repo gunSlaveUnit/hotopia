@@ -5,19 +5,20 @@ ViewManager:
 <SignInView>:
     name: "sign_in_view"
 
-    GridLayout:
-        cols: 2
+    BoxLayout:
+        orientation: "vertical"
 
-        Label:
-            text: "Don’t have an account?"
+        GridLayout:
+            cols: 2
 
-        Button:
-            text: "Create a new account"
-            on_release:
-                app.root.current = "sign_up_view"
-                root.manager.transition.direction = "left"
+            Label:
+                text: "Don’t have an account?"
 
-
+            Button:
+                text: "Create a new account"
+                on_release:
+                    app.root.current = "sign_up_view"
+                    root.manager.transition.direction = "left"
 
 <SignUpView>:
     name: "sign_up_view"
