@@ -1,6 +1,7 @@
 ViewManager:
     SignInView:
     SignUpView:
+    Base:
 
 <SignInView>:
     name: "sign_in_view"
@@ -22,6 +23,9 @@ ViewManager:
 
         Button:
             text: "Log in"
+            on_release:
+                app.root.current = "base"
+                root.manager.transition.direction = "up"
 
         GridLayout:
             rows: 2
@@ -68,6 +72,9 @@ ViewManager:
 
         Button:
             text: "Create a new account"
+            on_release:
+                app.root.current = "base"
+                root.manager.transition.direction = "up"
 
         GridLayout:
             cols: 2
@@ -80,3 +87,6 @@ ViewManager:
                 on_release:
                     app.root.current = "sign_in_view"
                     root.manager.transition.direction = "right"
+
+<Base>:
+    name: "base"

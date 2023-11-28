@@ -16,6 +16,10 @@ class SignUpView(Screen):
     pass
 
 
+class Base(Screen):
+    pass
+
+
 class Hotopia(App):
     def __init__(self):
         super().__init__()
