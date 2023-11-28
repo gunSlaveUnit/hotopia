@@ -45,14 +45,38 @@ ViewManager:
 <SignUpView>:
     name: "sign_up_view"
 
-    GridLayout:
-        cols: 2
+    BoxLayout:
+        orientation: "vertical"
 
         Label:
-            text: "Already have an account?"
+            text: "Email address"
+
+        TextInput:
+            multiline: False
+
+        Label:
+            text: "Account name"
+
+        TextInput:
+            multiline: False
+
+        Label:
+            text: "Password"
+
+        TextInput:
+            multiline: False
 
         Button:
-            text: "Login to existing account"
-            on_release:
-                app.root.current = "sign_in_view"
-                root.manager.transition.direction = "right"
+            text: "Create a new account"
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: "Already have an account?"
+
+            Button:
+                text: "Login to existing account"
+                on_release:
+                    app.root.current = "sign_in_view"
+                    root.manager.transition.direction = "right"
