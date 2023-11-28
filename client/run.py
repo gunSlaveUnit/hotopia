@@ -2,6 +2,7 @@ from kivy import Config
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.widget import Widget
 
 
 class ViewManager(ScreenManager):
@@ -16,7 +17,19 @@ class SignUpView(Screen):
     pass
 
 
-class Base(Screen):
+class Menu(Widget):
+    pass
+
+
+class Home(Screen):
+    pass
+
+
+class Explore(Screen):
+    pass
+
+
+class Profile(Screen):
     pass
 
 
