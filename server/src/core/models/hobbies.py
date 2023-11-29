@@ -7,3 +7,4 @@ class Hobby(Entity):
     __tablename__ = "hobbies"
 
     name: Mapped[str]
+    short_description: Mapped[str]
