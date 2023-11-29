@@ -8,3 +8,4 @@ class Hobby(Entity):
 
     name: Mapped[str]
     short_description: Mapped[str]
+    long_description: Mapped[str]
