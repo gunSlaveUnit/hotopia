@@ -1,35 +1,41 @@
 from kivy import Config
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.widget import Widget
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.screenmanager import Screen
 
 
-class ViewManager(ScreenManager):
+class BaseLayout(BoxLayout):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        self.menu = Menu()
+
+    def add_menu(self):
+        self.add_widget(self.menu)
+
+    def remove_menu(self):
+        self.remove_widget(self.menu)
+
+
+class SignInScreen(Screen):
     pass
 
 
-class SignInView(Screen):
+class SignUpScreen(Screen):
     pass
 
 
-class SignUpView(Screen):
+class ExploreScreen(Screen):
+    pass
+
+
+class ProfileScreen(Screen):
     pass
 
 
 class Menu(Widget):
-    pass
-
-
-class Home(Screen):
-    pass
-
-
-class Explore(Screen):
-    pass
-
-
-class Profile(Screen):
     pass
 
 

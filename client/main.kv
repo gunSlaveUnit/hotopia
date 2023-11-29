@@ -1,13 +1,23 @@
-ViewManager:
-    SignInView
-    SignUpView
-    Home
-    Explore
-    Profile
+BaseLayout:
+    orientation: "vertical"
 
-<SignInView>:
-    name: "sign_in_view"
+    ScreenManager:
+        id: screen_manager
 
+        SignInScreen:
+            name: "sign_in_screen"
+
+        SignUpScreen:
+            name: "sign_up_screen"
+
+        ExploreScreen:
+            name: "explore_screen"
+
+        ProfileScreen:
+            name: "profile_screen"
+
+
+<SignInScreen>
     BoxLayout:
         orientation: "vertical"
 
@@ -26,8 +36,9 @@ ViewManager:
         Button:
             text: "Log in"
             on_release:
-                app.root.current = "home"
-                root.manager.transition.direction = "up"
+                app.root.ids.screen_manager.current = "explore_screen"
+                app.root.ids.screen_manager.transition.direction = "up"
+                app.root.add_menu()
 
         GridLayout:
             rows: 2
@@ -39,8 +50,8 @@ ViewManager:
             Button:
                 text: "Create a new account"
                 on_release:
-                    app.root.current = "sign_up_view"
-                    root.manager.transition.direction = "left"
+                    app.root.ids.screen_manager.current = "sign_up_screen"
+                    app.root.ids.screen_manager.transition.direction = "left"
 
             Label:
                 text: "Forgot your password?"
@@ -48,9 +59,7 @@ ViewManager:
             Button:
                 text: "Reset password"
 
-<SignUpView>:
-    name: "sign_up_view"
-
+<SignUpScreen>:
     BoxLayout:
         orientation: "vertical"
 
@@ -75,8 +84,8 @@ ViewManager:
         Button:
             text: "Create a new account"
             on_release:
-                app.root.current = "home"
-                root.manager.transition.direction = "up"
+                app.root.ids.screen_manager.current = "explore"
+                app.root.ids.screen_manager.transition.direction = "up"
 
         GridLayout:
             cols: 2
@@ -87,57 +96,27 @@ ViewManager:
             Button:
                 text: "Login to existing account"
                 on_release:
-                    app.root.current = "sign_in_view"
-                    root.manager.transition.direction = "right"
+                    app.root.ids.screen_manager.current = "sign_in_screen"
+                    app.root.ids.screen_manager.transition.direction = "right"
+
+<ExploreScreen>:
+    Label:
+        text: "Explore"
+
+<ProfileScreen>:
+    Label:
+        text: "Profile"
 
 <Menu>:
     GridLayout:
-        cols: 3
-
-        Button:
-            text: "Home"
-            on_release:
-                app.root.current = "home"
+        cols: 2
 
         Button:
             text: "Explore"
             on_release:
-                app.root.current = "explore"
+                app.root.ids.screen_manager.current = "explore_screen"
 
         Button:
             text: "Profile"
             on_release:
-                app.root.current = "profile"
-
-<Home>:
-    name: "home"
-
-    BoxLayout:
-        orientation: "vertical"
-
-        Label:
-            text: "Home"
-
-        Menu
-
-<Explore>:
-    name: "explore"
-
-    BoxLayout:
-        orientation: "vertical"
-
-        Label:
-            text: "Explore"
-
-        Menu
-
-<Profile>:
-    name: "profile"
-
-    BoxLayout:
-        orientation: "vertical"
-
-        Label:
-            text: "Profile"
-
-        Menu
+                app.root.ids.screen_manager.current = "profile_screen"
