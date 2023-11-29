@@ -30,6 +30,7 @@ class Entity(Base):
         item = cls(**data.dict())
 
         session.add(item)
+        await session.commit()
         await session.flush()
 
         return item
