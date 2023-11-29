@@ -8,8 +8,8 @@ class UnitBaseSchema(BaseModel):
     done: bool
     experience_amount: int
     duration: int
-    module: int
-    previous_unit: int | None
+    module_id: int
+    previous_unit_id: int | None
 
 
 class UnitCreateSchema(UnitBaseSchema):

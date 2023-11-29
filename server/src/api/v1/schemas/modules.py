@@ -6,8 +6,8 @@ from server.src.api.v1.schemas.entity import EntityDBSchema
 class ModuleBaseSchema(BaseModel):
     name: str
     description: str
-    hobby: int
-    previous_module: int | None
+    hobby_id: int
+    previous_module_id: int | None
 
 
 class ModuleCreateSchema(ModuleBaseSchema):
