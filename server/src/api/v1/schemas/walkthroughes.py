@@ -4,8 +4,8 @@ from server.src.api.v1.schemas.entity import EntityDBSchema
 
 
 class WalkthroughBaseSchema(BaseModel):
-    user: int
-    unit: int
+    user_id: int
+    unit_id: int
 
 
 class WalkthroughCreateSchema(WalkthroughBaseSchema):
