@@ -104,8 +104,12 @@ BaseLayout:
         text: "Explore"
 
 <ProfileScreen>:
-    Label:
-        text: "Profile"
+    Button:
+        text: "Sign out"
+        on_release:
+            app.root.ids.screen_manager.current = "sign_in_screen"
+            app.root.ids.screen_manager.transition.direction = "down"
+            app.root.remove_menu()
 
 <Menu>:
     GridLayout:
