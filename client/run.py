@@ -1,12 +1,12 @@
 from kivy import Config
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.widget import Widget
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import Screen
 
 
-class BaseLayout(BoxLayout):
+class RootLayout(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -35,7 +35,7 @@ class ProfileScreen(Screen):
     pass
 
 
-class Menu(Widget):
+class Menu(GridLayout):
     pass
 
 
@@ -47,8 +47,8 @@ class Hotopia(App):
         Config.set('graphics', 'height', '800')
 
     def build(self):
-        root_widget = Builder.load_file("main.kv")
-        return root_widget
+        root_layout = Builder.load_file("layout.kv")
+        return root_layout
 
 
 if __name__ == '__main__':

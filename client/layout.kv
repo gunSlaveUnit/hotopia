@@ -1,4 +1,4 @@
-BaseLayout:
+RootLayout:
     orientation: "vertical"
 
     ScreenManager:
@@ -15,7 +15,6 @@ BaseLayout:
 
         ProfileScreen:
             name: "profile_screen"
-
 
 <SignInScreen>
     BoxLayout:
@@ -100,8 +99,24 @@ BaseLayout:
                     app.root.ids.screen_manager.transition.direction = "right"
 
 <ExploreScreen>:
-    Label:
-        text: "Explore"
+    ScrollView:
+        BoxLayout:
+            size_hint_y: None
+            orientation: "vertical"
+            height: self.minimum_height
+
+            Button:
+                height: 100
+                text: "Boo #1"
+                size_hint_y: None
+            Button:
+                height: 200
+                text: "Boo #2"
+                size_hint_y: None
+            Button:
+                height: 300
+                text: "Boo #3"
+                size_hint_y: None
 
 <ProfileScreen>:
     Button:
@@ -112,15 +127,14 @@ BaseLayout:
             app.root.remove_menu()
 
 <Menu>:
-    GridLayout:
-        cols: 2
+    cols: 2
 
-        Button:
-            text: "Explore"
-            on_release:
-                app.root.ids.screen_manager.current = "explore_screen"
+    Button:
+        text: "Explore"
+        on_release:
+            app.root.ids.screen_manager.current = "explore_screen"
 
-        Button:
-            text: "Profile"
-            on_release:
-                app.root.ids.screen_manager.current = "profile_screen"
+    Button:
+        text: "Profile"
+        on_release:
+            app.root.ids.screen_manager.current = "profile_screen"
