@@ -1,3 +1,6 @@
+import asyncio
+
+import aiohttp
 from kivy import Config
 from kivy.app import App
 from kivy.lang import Builder
@@ -28,7 +31,14 @@ class SignUpScreen(Screen):
 
 
 class ExploreScreen(Screen):
-    pass
+    def on_enter(self, *args):
+        async def fetch():
+            async with aiohttp.ClientSession() as session:
+                async with session.get('http://127.0.0.1:8000/api/v1/hobbies') as response:
+                    hobbies = await response.json()
+                    print(hobbies)
+
+        asyncio.run(fetch())
 
 
 class ProfileScreen(Screen):
