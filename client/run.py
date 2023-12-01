@@ -1,9 +1,13 @@
 import asyncio
+import time
+from threading import Thread
 
 import aiohttp
 from kivy import Config
 from kivy.app import App
+from kivy.clock import Clock
 from kivy.lang import Builder
+from kivy.properties import StringProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivy.uix.gridlayout import GridLayout
@@ -30,15 +34,30 @@ class SignUpScreen(Screen):
     pass
 
 
+class HobbyCard(BoxLayout):
+    name = StringProperty()
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
 class ExploreScreen(Screen):
     def on_enter(self, *args):
-        async def fetch():
-            async with aiohttp.ClientSession() as session:
-                async with session.get('http://127.0.0.1:8000/api/v1/hobbies') as response:
-                    hobbies = await response.json()
-                    print(hobbies)
+        self.ids.hobbies.clear_widgets()
+        asyncio.run(self.fetch_hobbies())
 
-        asyncio.run(fetch())
+    async def fetch_hobbies(self):
+        async with aiohttp.ClientSession() as session:
+            async with session.get('http://127.0.0.1:8000/api/v1/hobbies') as response:
+                hobbies = await response.json()
+
+                for hobby in hobbies:
+                    self.ids.hobbies.add_widget(
+                        HobbyCard(
+                            name=hobby['name'],
+                            size_hint_y=None,
+                        )
+                    )
 
 
 class ProfileScreen(Screen):
