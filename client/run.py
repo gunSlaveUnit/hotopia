@@ -72,7 +72,6 @@ class HobbyScreen(Screen):
         async with aiohttp.ClientSession() as session:
             async with session.get(f'http://127.0.0.1:8000/api/v1/hobbies/{hobby_id}') as response:
                 hobby = await response.json()
-                print(hobby)
                 self.title = hobby['name']
                 self.long_description = hobby['long_description']
 
