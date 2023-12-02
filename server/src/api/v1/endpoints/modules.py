@@ -24,6 +24,11 @@ async def items(
     return [_ async for _ in hobbies]
 
 
+@router.get('/{item_id}', response_model=Optional[ModuleDBSchema])
+async def item(item_id: int, db: AsyncSession = Depends(get_db)) -> Optional[Module]:
+    return await Module.by_id(db, item_id)
+
+
 @router.post('/', response_model=ModuleDBSchema)
 async def create(data: ModuleCreateSchema, db: AsyncSession = Depends(get_db)):
     return await Module.create(db, data)
