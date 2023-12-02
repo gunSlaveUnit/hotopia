@@ -119,7 +119,7 @@ class ModuleScreen(Screen):
                 module = await response.json()
                 self.title = module['name']
 
-            async with session.get(f'http://127.0.0.1:8000/api/v1/units/?module_id{module_id}') as response:
+            async with session.get(f'http://127.0.0.1:8000/api/v1/units/?module_id={module_id}') as response:
                 units = await response.json()
 
                 for unit in units:
