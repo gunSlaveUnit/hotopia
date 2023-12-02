@@ -120,8 +120,20 @@ RootLayout:
             height: self.minimum_height
 
 <HobbyScreen>:
-    Label:
-        text: self.parent.title
+    ScrollView:
+        BoxLayout:
+            size_hint_y: None
+            orientation: "vertical"
+            height: self.minimum_height
+
+            Label:
+                size_hint_y: None
+                text: self.parent.parent.parent.title
+
+            Label:
+                size_hint_y: None
+                text_size: self.width, None
+                text: self.parent.parent.parent.long_description
 
 <ProfileScreen>:
     Button:
