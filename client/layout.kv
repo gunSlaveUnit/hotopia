@@ -153,6 +153,13 @@ RootLayout:
                 text_size: self.width, None
                 text: self.parent.parent.parent.long_description
 
+            BoxLayout:
+                id: modules
+
+                size_hint_y: None
+                orientation: "vertical"
+                height: self.minimum_height
+
 <ProfileScreen>:
     Button:
         text: "Sign out"
