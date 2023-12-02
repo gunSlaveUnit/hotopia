@@ -4,7 +4,7 @@ import aiohttp
 from kivy import Config
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, NumericProperty
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
@@ -33,6 +33,7 @@ class SignUpScreen(Screen):
 
 
 class HobbyCard(ButtonBehavior, BoxLayout):
+    item_id = NumericProperty()
     name = StringProperty()
 
     def __init__(self, **kwargs):
@@ -52,6 +53,7 @@ class ExploreScreen(Screen):
                 for hobby in hobbies:
                     self.ids.hobbies.add_widget(
                         HobbyCard(
+                            item_id=hobby['id'],
                             name=hobby['name'],
                             size_hint_y=None,
                         )
