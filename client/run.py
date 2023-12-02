@@ -107,6 +107,32 @@ class UnitCard(ButtonBehavior, BoxLayout):
         super().__init__(**kwargs)
 
 
+class ModuleScreen(Screen):
+    title = StringProperty()
+
+    def load(self, module_id):
+        self.ids.units.clear_widgets()
+        asyncio.run(self.fetch_module(module_id))
+
+    async def fetch_module(self, module_id: int):
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f'http://127.0.0.1:8000/api/v1/modules/{module_id}') as response:
+                module = await response.json()
+                self.title = module['name']
+
+            async with session.get(f'http://127.0.0.1:8000/api/v1/units/?module_id{module_id}') as response:
+                units = await response.json()
+
+                for unit in units:
+                    self.ids.units.add_widget(
+                        UnitCard(
+                            item_id=unit['id'],
+                            title=unit['name'],
+                            description=unit['description'],
+                        )
+                    )
+
+
 class ProfileScreen(Screen):
     pass
 
