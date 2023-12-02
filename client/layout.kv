@@ -103,6 +103,9 @@ RootLayout:
                     app.root.ids.screen_manager.transition.direction = "right"
 
 <HobbyCard>:
+    size_hint_y: None
+    orientation: "vertical"
+
     on_release:
         app.root.ids.hobby_screen.load(self.item_id)
         app.root.ids.screen_manager.current = "hobby_screen"
