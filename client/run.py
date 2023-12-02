@@ -34,7 +34,7 @@ class SignUpScreen(Screen):
 
 class HobbyCard(ButtonBehavior, BoxLayout):
     item_id = NumericProperty()
-    name = StringProperty()
+    title = StringProperty()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -54,15 +54,24 @@ class ExploreScreen(Screen):
                     self.ids.hobbies.add_widget(
                         HobbyCard(
                             item_id=hobby['id'],
-                            name=hobby['name'],
+                            title=hobby['name'],
                             size_hint_y=None,
                         )
                     )
 
 
 class HobbyScreen(Screen):
+    title = StringProperty()
+
     def load(self, hobby_id):
-        print("Try to load hobby", hobby_id)
+        asyncio.run(self.fetch_hobby(hobby_id))
+
+    async def fetch_hobby(self, hobby_id: int):
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f'http://127.0.0.1:8000/api/v1/hobbies/{hobby_id}') as response:
+                hobby = await response.json()
+
+                self.title = hobby['name']
 
 
 class ProfileScreen(Screen):

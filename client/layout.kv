@@ -108,7 +108,7 @@ RootLayout:
         app.root.ids.screen_manager.current = "hobby_screen"
 
     Label:
-        text: self.parent.name
+        text: self.parent.title
 
 <ExploreScreen>:
     ScrollView:
@@ -121,7 +121,7 @@ RootLayout:
 
 <HobbyScreen>:
     Label:
-        text: "Some hobby will be displayed here"
+        text: self.parent.title
 
 <ProfileScreen>:
     Button:
