@@ -57,6 +57,10 @@ class ExploreScreen(Screen):
                     )
 
 
+class HobbyScreen(Screen):
+    pass
+
+
 class ProfileScreen(Screen):
     pass
 
