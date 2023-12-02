@@ -160,6 +160,13 @@ RootLayout:
                 orientation: "vertical"
                 height: self.minimum_height
 
+<UnitCard>:
+    size_hint_y: None
+    orientation: "vertical"
+
+    Label:
+        text: self.parent.title
+
 <ProfileScreen>:
     Button:
         text: "Sign out"
