@@ -134,6 +134,10 @@ RootLayout:
     size_hint_y: None
     orientation: "vertical"
 
+    on_release:
+        app.root.ids.module_screen.load(self.item_id)
+        app.root.ids.screen_manager.current = "module_screen"
+
     Label:
         text: self.parent.title
 
