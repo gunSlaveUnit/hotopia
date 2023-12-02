@@ -61,6 +61,15 @@ class ExploreScreen(Screen):
                     )
 
 
+class ModuleCard(ButtonBehavior, BoxLayout):
+    item_id = NumericProperty()
+    title = StringProperty()
+    description = StringProperty()
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
 class HobbyScreen(Screen):
     title = StringProperty()
     long_description = StringProperty()
