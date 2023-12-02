@@ -126,6 +126,17 @@ RootLayout:
             orientation: "vertical"
             height: self.minimum_height
 
+<ModuleCard>:
+    size_hint_y: None
+    orientation: "vertical"
+
+    Label:
+        text: self.parent.title
+
+    Label:
+        text_size: self.width, None
+        text: self.parent.description
+
 <HobbyScreen>:
     ScrollView:
         BoxLayout:
