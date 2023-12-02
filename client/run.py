@@ -101,7 +101,6 @@ class HobbyScreen(Screen):
 class UnitCard(ButtonBehavior, BoxLayout):
     item_id = NumericProperty()
     title = StringProperty()
-    description = StringProperty()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
