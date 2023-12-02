@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -12,8 +12,16 @@ router = APIRouter(prefix=UNITS_ROUTER_PREFIX)
 
 
 @router.get('/', response_model=List[UnitDBSchema])
-async def items(db: AsyncSession = Depends(get_db)) -> List[Unit]:
-    return [_ async for _ in Unit.every(db)]
+async def items(
+        module_id: Optional[int] = None,
+        db: AsyncSession = Depends(get_db)
+) -> List[Unit]:
+    units = Unit.every(db)
+
+    if module_id:
+        units = (unit async for unit in units if unit.module_id == module_id)
+
+    return [_ async for _ in units]
 
 
 @router.post('/', response_model=UnitDBSchema)
