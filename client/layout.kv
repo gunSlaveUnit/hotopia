@@ -102,6 +102,8 @@ RootLayout:
                     app.root.ids.screen_manager.transition.direction = "right"
 
 <HobbyCard>:
+    on_press: app.root.ids.screen_manager.current = "hobby_screen"
+
     Label:
         text: self.parent.name
 
@@ -113,6 +115,10 @@ RootLayout:
             size_hint_y: None
             orientation: "vertical"
             height: self.minimum_height
+
+<HobbyScreen>:
+    Label:
+        text: "Some hobby will be displayed here"
 
 <ProfileScreen>:
     Button:
