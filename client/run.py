@@ -127,7 +127,6 @@ class ModuleScreen(Screen):
                         UnitCard(
                             item_id=unit['id'],
                             title=unit['name'],
-                            description=unit['description'],
                         )
                     )
 
