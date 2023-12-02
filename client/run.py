@@ -75,6 +75,7 @@ class HobbyScreen(Screen):
     long_description = StringProperty()
 
     def load(self, hobby_id):
+        self.ids.modules.clear_widgets()
         asyncio.run(self.fetch_hobby(hobby_id))
 
     async def fetch_hobby(self, hobby_id: int):
@@ -83,6 +84,18 @@ class HobbyScreen(Screen):
                 hobby = await response.json()
                 self.title = hobby['name']
                 self.long_description = hobby['long_description']
+
+            async with session.get(f'http://127.0.0.1:8000/api/v1/modules/?hobby_id={hobby_id}') as response:
+                modules = await response.json()
+
+                for module in modules:
+                    self.ids.modules.add_widget(
+                        ModuleCard(
+                            item_id=module['id'],
+                            title=module['name'],
+                            description=module['description'],
+                        )
+                    )
 
 
 class ProfileScreen(Screen):
