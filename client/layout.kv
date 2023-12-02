@@ -17,6 +17,10 @@ RootLayout:
             id: hobby_screen
             name: "hobby_screen"
 
+        ModuleScreen:
+            id: module_screen
+            name: "module_screen"
+
         ProfileScreen:
             name: "profile_screen"
 
@@ -166,6 +170,24 @@ RootLayout:
 
     Label:
         text: self.parent.title
+
+<ModuleScreen>:
+    ScrollView:
+        BoxLayout:
+            size_hint_y: None
+            orientation: "vertical"
+            height: self.minimum_height
+
+            Label:
+                size_hint_y: None
+                text: self.parent.parent.parent.title
+
+            BoxLayout:
+                id: units
+
+                size_hint_y: None
+                orientation: "vertical"
+                height: self.minimum_height
 
 <ProfileScreen>:
     Button:
