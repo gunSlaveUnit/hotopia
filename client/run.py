@@ -5,6 +5,7 @@ from kivy import Config
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import StringProperty
+from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivy.uix.gridlayout import GridLayout
@@ -31,7 +32,7 @@ class SignUpScreen(Screen):
     pass
 
 
-class HobbyCard(BoxLayout):
+class HobbyCard(ButtonBehavior, BoxLayout):
     name = StringProperty()
 
     def __init__(self, **kwargs):
