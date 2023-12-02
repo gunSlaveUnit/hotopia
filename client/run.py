@@ -61,7 +61,8 @@ class ExploreScreen(Screen):
 
 
 class HobbyScreen(Screen):
-    pass
+    def load(self, hobby_id):
+        print("Try to load hobby", hobby_id)
 
 
 class ProfileScreen(Screen):
