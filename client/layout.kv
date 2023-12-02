@@ -14,6 +14,7 @@ RootLayout:
             name: "explore_screen"
 
         HobbyScreen:
+            id: hobby_screen
             name: "hobby_screen"
 
         ProfileScreen:
@@ -102,7 +103,9 @@ RootLayout:
                     app.root.ids.screen_manager.transition.direction = "right"
 
 <HobbyCard>:
-    on_press: app.root.ids.screen_manager.current = "hobby_screen"
+    on_release:
+        app.root.ids.hobby_screen.load(self.item_id)
+        app.root.ids.screen_manager.current = "hobby_screen"
 
     Label:
         text: self.parent.name
