@@ -1,4 +1,4 @@
-from typing import List, Optional, AsyncIterator
+from typing import List, Optional
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
