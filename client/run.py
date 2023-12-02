@@ -35,6 +35,7 @@ class SignUpScreen(Screen):
 class HobbyCard(ButtonBehavior, BoxLayout):
     item_id = NumericProperty()
     title = StringProperty()
+    short_description = StringProperty()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -55,7 +56,7 @@ class ExploreScreen(Screen):
                         HobbyCard(
                             item_id=hobby['id'],
                             title=hobby['name'],
-                            size_hint_y=None,
+                            short_description=hobby['short_description'],
                         )
                     )
 
