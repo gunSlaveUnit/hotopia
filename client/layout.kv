@@ -21,6 +21,10 @@ RootLayout:
             id: module_screen
             name: "module_screen"
 
+        UnitScreen:
+            id: unit_screen
+            name: "unit_screen"
+
         ProfileScreen:
             name: "profile_screen"
 
@@ -172,6 +176,10 @@ RootLayout:
 <UnitCard>:
     size_hint_y: None
     orientation: "vertical"
+
+    on_release:
+        app.root.ids.unit_screen.load(self.item_id)
+        app.root.ids.screen_manager.current = "unit_screen"
 
     Label:
         text: self.parent.title
