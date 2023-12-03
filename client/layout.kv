@@ -205,6 +205,8 @@ RootLayout:
 <UnitScreen>:
     ScrollView:
         BoxLayout:
+            id: unit
+
             size_hint_y: None
             orientation: "vertical"
             height: self.minimum_height
@@ -213,12 +215,11 @@ RootLayout:
                 size_hint_y: None
                 text: self.parent.parent.parent.title
 
+            # The content of the module unit comes here.
+            # It is located here so as not to check whether it exists
+            # when clearing (when loading another unit)
             BoxLayout:
                 id: content
-
-                size_hint_y: None
-                orientation: "vertical"
-                height: self.minimum_height
 
 <ProfileScreen>:
     Button:
