@@ -1,4 +1,4 @@
-SESSION_TTL = 3 * 24 * 60 * 60
+DEBUG = True
 
 API_PREFIX = '/api'
 API_VERSION_1_PREFIX = API_PREFIX + '/v1'
@@ -7,3 +7,5 @@ UNITS_ROUTER_PREFIX = '/units'
 MODULES_ROUTER_PREFIX = '/modules'
 HOBBIES_ROUTER_PREFIX = '/hobbies'
 WALKTHROUGHES_ROUTER_PREFIX = '/walkthroughes'
+
+SESSION_TTL = 3 * 24 * 60 * 60
