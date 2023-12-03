@@ -131,6 +131,20 @@ class ModuleScreen(Screen):
                     )
 
 
+class UnitScreen(Screen):
+    title = StringProperty()
+
+    def load(self, unit_id):
+        self.ids.content.clear_widgets()
+        asyncio.run(self.fetch_unit(unit_id))
+
+    async def fetch_unit(self, unit_id: int):
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f'http://127.0.0.1:8000/api/v1/units/{unit_id}') as response:
+                unit = await response.json()
+                self.title = unit['name']
+
+
 class ProfileScreen(Screen):
     pass
 
