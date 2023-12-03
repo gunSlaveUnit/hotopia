@@ -194,6 +194,24 @@ RootLayout:
                 orientation: "vertical"
                 height: self.minimum_height
 
+<UnitScreen>:
+    ScrollView:
+        BoxLayout:
+            size_hint_y: None
+            orientation: "vertical"
+            height: self.minimum_height
+
+            Label:
+                size_hint_y: None
+                text: self.parent.parent.parent.title
+
+            BoxLayout:
+                id: content
+
+                size_hint_y: None
+                orientation: "vertical"
+                height: self.minimum_height
+
 <ProfileScreen>:
     Button:
         text: "Sign out"
