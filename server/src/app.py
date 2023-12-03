@@ -9,7 +9,8 @@ app = FastAPI(debug=DEBUG)
 
 app.include_router(api_v1_router)
 
-app.mount("/media", StaticFiles(directory="media"), name="media")
+if DEBUG:
+    app.mount("/media", StaticFiles(directory="media"), name="media")
 
 
 @app.on_event("startup")
