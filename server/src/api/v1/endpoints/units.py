@@ -24,6 +24,11 @@ async def items(
     return [_ async for _ in units]
 
 
+@router.get('/{item_id}', response_model=Optional[UnitDBSchema])
+async def item(item_id: int, db: AsyncSession = Depends(get_db)) -> Optional[Unit]:
+    return await Unit.by_id(db, item_id)
+
+
 @router.post('/', response_model=UnitDBSchema)
 async def create(data: UnitCreateSchema, db: AsyncSession = Depends(get_db)):
     return await Unit.create(db, data)
