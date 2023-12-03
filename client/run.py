@@ -1,14 +1,15 @@
 import asyncio
+from io import BytesIO
 
 import aiohttp
 from kivy import Config
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.properties import StringProperty, NumericProperty
-from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.behaviors import ButtonBehavior
+from kivy.properties import StringProperty, NumericProperty
 
 
 class RootLayout(BoxLayout):
@@ -133,9 +134,10 @@ class ModuleScreen(Screen):
 
 class UnitScreen(Screen):
     title = StringProperty()
+    filename = StringProperty()
 
     def load(self, unit_id):
-        self.ids.content.clear_widgets()
+        self.remove_widget(self.ids.content)
         asyncio.run(self.fetch_unit(unit_id))
 
     async def fetch_unit(self, unit_id: int):
@@ -143,6 +145,12 @@ class UnitScreen(Screen):
             async with session.get(f'http://127.0.0.1:8000/api/v1/units/{unit_id}') as response:
                 unit = await response.json()
                 self.title = unit['name']
+                self.filename = unit['filename']
+
+            async with session.get(f'http://127.0.0.1:8000/media/{self.filename}') as response:
+                file_content_io = BytesIO(await response.read())
+                unit_content = Builder.load_string(file_content_io.getvalue().decode())
+                self.ids.unit.add_widget(unit_content)
 
 
 class ProfileScreen(Screen):
