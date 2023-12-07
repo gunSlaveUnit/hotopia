@@ -7,6 +7,7 @@ class HobbyBaseSchema(BaseModel):
     name: str
     short_description: str
     long_description: str
+    card_picture_filename: str
 
 
 class HobbyCreateSchema(HobbyBaseSchema):
