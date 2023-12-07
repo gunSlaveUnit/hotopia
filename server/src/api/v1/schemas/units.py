@@ -8,7 +8,7 @@ class UnitBaseSchema(BaseModel):
     done: bool
     experience_amount: int
     duration: int
-    filename: str
+    content_filename: str
     module_id: int
     previous_unit_id: int | None
 
