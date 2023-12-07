@@ -109,6 +109,7 @@ class UnitCard(ButtonBehavior, BoxLayout):
 
 class ModuleScreen(Screen):
     title = StringProperty()
+    selected_unit_id = NumericProperty()
 
     def load(self, module_id):
         self.ids.units.clear_widgets()
@@ -121,9 +122,11 @@ class ModuleScreen(Screen):
                 self.title = module['name']
 
             async with session.get(f'http://127.0.0.1:8000/api/v1/units/?module_id={module_id}') as response:
-                units = await response.json()
+                self.units = await response.json()
 
-                for unit in units:
+                self.units.sort(key=lambda unit: (unit['previous_unit_id'] is not None, unit['previous_unit_id']))
+
+                for unit in self.units:
                     self.ids.units.add_widget(
                         UnitCard(
                             item_id=unit['id'],
@@ -131,13 +134,23 @@ class ModuleScreen(Screen):
                         )
                     )
 
+    def next_unit_id(self):
+        for unit in self.units:
+            if unit['previous_unit_id'] == self.selected_unit_id:
+                self.selected_unit_id = unit['id']
+                return unit['id']
+        return None
+
 
 class UnitScreen(Screen):
     title = StringProperty()
     filename = StringProperty()
 
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.unit_content = None
+
     def load(self, unit_id):
-        self.remove_widget(self.ids.content)
         asyncio.run(self.fetch_unit(unit_id))
 
     async def fetch_unit(self, unit_id: int):
@@ -149,8 +162,10 @@ class UnitScreen(Screen):
 
             async with session.get(f'http://127.0.0.1:8000/media/{self.filename}') as response:
                 file_content_io = BytesIO(await response.read())
-                unit_content = Builder.load_string(file_content_io.getvalue().decode())
-                self.ids.unit.add_widget(unit_content)
+                if self.unit_content:
+                    self.ids.unit.remove_widget(self.unit_content)
+                self.unit_content = Builder.load_string(file_content_io.getvalue().decode())
+                self.ids.unit.add_widget(self.unit_content)
 
 
 class ProfileScreen(Screen):
