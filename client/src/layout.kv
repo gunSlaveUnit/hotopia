@@ -1,7 +1,7 @@
 RootLayout:
     orientation: "vertical"
 
-    ScreenManager:
+    MDScreenManager:
         id: screen_manager
 
         SignInScreen:
@@ -13,233 +13,82 @@ RootLayout:
         ExploreScreen:
             name: "explore_screen"
 
-        HobbyScreen:
-            id: hobby_screen
-            name: "hobby_screen"
-
-        ModuleScreen:
-            id: module_screen
-            name: "module_screen"
-
-        UnitScreen:
-            id: unit_screen
-            name: "unit_screen"
-
-        ProfileScreen:
-            name: "profile_screen"
-
 <SignInScreen>
-    BoxLayout:
+    MDBoxLayout:
         orientation: "vertical"
+        padding: app.default_margin
 
-        Label:
+        MDLabel:
             text: "Account name"
 
-        TextInput:
-            multiline: False
+        MDTextField
 
-        Label:
+        MDLabel:
             text: "Password"
 
-        TextInput:
-            multiline: False
+        MDTextField
 
-        Button:
+        MDRectangleFlatButton:
             text: "Log in"
-            on_release:
-                app.root.ids.screen_manager.current = "explore_screen"
-                app.root.ids.screen_manager.transition.direction = "up"
-                app.root.add_menu()
+            size_hint_x: 1.0
 
-        GridLayout:
+        MDGridLayout:
             rows: 2
             cols: 2
 
-            Label:
+            MDLabel:
                 text: "Don’t have an account?"
 
-            Button:
+            MDRectangleFlatButton:
+                size_hint_x: 1.0
                 text: "Create a new account"
+
                 on_release:
                     app.root.ids.screen_manager.current = "sign_up_screen"
                     app.root.ids.screen_manager.transition.direction = "left"
 
-            Label:
+            MDLabel:
                 text: "Forgot your password?"
 
-            Button:
+            MDRectangleFlatButton:
+                size_hint_x: 1.0
                 text: "Reset password"
 
 <SignUpScreen>:
-    BoxLayout:
+    MDBoxLayout:
         orientation: "vertical"
+        padding: app.default_margin
 
-        Label:
+        MDLabel:
             text: "Email address"
 
-        TextInput:
-            multiline: False
+        MDTextField
 
-        Label:
+        MDLabel:
             text: "Account name"
 
-        TextInput:
-            multiline: False
+        MDTextField
 
-        Label:
+        MDLabel:
             text: "Password"
 
-        TextInput:
-            multiline: False
+        MDTextField
 
-        Button:
+        MDRectangleFlatButton:
+            size_hint_x: 1.0
             text: "Create a new account"
-            on_release:
-                app.root.ids.screen_manager.current = "explore_screen"
-                app.root.ids.screen_manager.transition.direction = "up"
-                app.root.add_menu()
 
-        GridLayout:
+        MDGridLayout:
             cols: 2
 
-            Label:
+            MDLabel:
+                align: "center"
                 text: "Already have an account?"
 
-            Button:
+            MDRectangleFlatButton:
+                size_hint_x: 1.0
                 text: "Login to existing account"
+
                 on_release:
                     app.root.ids.screen_manager.current = "sign_in_screen"
                     app.root.ids.screen_manager.transition.direction = "right"
-
-<HobbyCard>:
-    size_hint_y: None
-    orientation: "vertical"
-
-    on_release:
-        app.root.ids.hobby_screen.load(self.item_id)
-        app.root.ids.screen_manager.current = "hobby_screen"
-
-    Label:
-        text: self.parent.title
-
-    Label:
-        text_size: self.width, None
-        text: self.parent.short_description
-
-<ExploreScreen>:
-    ScrollView:
-        BoxLayout:
-            id: hobbies
-
-            size_hint_y: None
-            orientation: "vertical"
-            height: self.minimum_height
-
-<ModuleCard>:
-    size_hint_y: None
-    orientation: "vertical"
-
-    on_release:
-        app.root.ids.module_screen.load(self.item_id)
-        app.root.ids.screen_manager.current = "module_screen"
-
-    Label:
-        text: self.parent.title
-
-    Label:
-        text_size: self.width, None
-        text: self.parent.description
-
-<HobbyScreen>:
-    ScrollView:
-        BoxLayout:
-            size_hint_y: None
-            orientation: "vertical"
-            height: self.minimum_height
-
-            Label:
-                size_hint_y: None
-                text: self.parent.parent.parent.title
-
-            Label:
-                size_hint_y: None
-                text_size: self.width, None
-                text: self.parent.parent.parent.long_description
-
-            BoxLayout:
-                id: modules
-
-                size_hint_y: None
-                orientation: "vertical"
-
-<UnitCard>:
-    size_hint_y: None
-    orientation: "vertical"
-
-    on_release:
-        app.root.ids.unit_screen.load(self.item_id)
-        app.root.ids.screen_manager.current = "unit_screen"
-        app.root.ids.module_screen.selected_unit_id = self.item_id
-
-    Label:
-        text: self.parent.title
-
-<ModuleScreen>:
-    ScrollView:
-        BoxLayout:
-            size_hint_y: None
-            orientation: "vertical"
-            height: self.minimum_height
-
-            Label:
-                size_hint_y: None
-                text: self.parent.parent.parent.title
-
-            BoxLayout:
-                id: units
-
-                size_hint_y: None
-                orientation: "vertical"
-                height: self.minimum_height
-
-<UnitScreen>:
-    ScrollView:
-        BoxLayout:
-            id: unit
-
-            size_hint_y: None
-            orientation: "vertical"
-            height: self.minimum_height
-
-            Label:
-                size_hint_y: None
-                text: self.parent.parent.parent.title
-
-            Button:
-                text: "Next unit"
-                size_hint_y: None
-
-                on_release:
-                    next_unit_id = app.root.ids.module_screen.next_unit_id()
-                    app.root.ids.unit_screen.load(next_unit_id) if next_unit_id else print("None")
-
-<ProfileScreen>:
-    Button:
-        text: "Sign out"
-        on_release:
-            app.root.ids.screen_manager.current = "sign_in_screen"
-            app.root.ids.screen_manager.transition.direction = "down"
-            app.root.remove_menu()
-
-<Menu>:
-    cols: 2
-
-    Button:
-        text: "Explore"
-        on_release:
-            app.root.ids.screen_manager.current = "explore_screen"
-
-    Button:
-        text: "Profile"
-        on_release:
-            app.root.ids.screen_manager.current = "profile_screen"
