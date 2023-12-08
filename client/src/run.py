@@ -9,6 +9,9 @@ from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.boxlayout import MDBoxLayout
 
+from client.src.auth_service import AuthService
+from api.v1.schemas.users import UserSignUpSchema
+
 
 class RootLayout(MDBoxLayout):
     pass
@@ -29,6 +32,8 @@ class ExploreScreen(MDScreen):
 class Hotopia(MDApp):
     def __init__(self):
         super().__init__()
+
+        self.auth_service = AuthService()
 
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Green"
