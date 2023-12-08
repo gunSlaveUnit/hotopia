@@ -3,6 +3,7 @@ from typing import List
 import requests
 from kivy import Config
 from kivy.uix.behaviors import ButtonBehavior
+from kivy.properties import NumericProperty, StringProperty
 
 from client.src.settings import HOBBIES_URL
 
@@ -60,7 +61,10 @@ class SignUpScreen(MDScreen):
 
 
 class HobbyCard(ButtonBehavior, MDBoxLayout):
-    pass
+    item_id = NumericProperty()
+    title = StringProperty()
+    short_description = StringProperty()
+    picture_filename = StringProperty()
 
 
 class ExploreScreen(MDScreen):
@@ -77,8 +81,15 @@ class ExploreScreen(MDScreen):
             return response.json()
 
     def map_hobbies(self, extracted_hobbies: List[dict]) -> None:
-        for _ in extracted_hobbies:
-            self.ids.hobbies.add_widget(HobbyCard())
+        for hobby in extracted_hobbies:
+            self.ids.hobbies.add_widget(
+                HobbyCard(
+                    item_id=hobby["id"],
+                    title=hobby["name"],
+                    short_description=hobby["short_description"],
+                    picture_filename=hobby["card_picture_filename"],
+                )
+            )
 
 
 class Hotopia(MDApp):
