@@ -14,4 +14,6 @@ HOBBIES_ROUTER_PREFIX = '/hobbies'
 API_VERSION_1_PREFIX = API_PREFIX + '/v1'
 WALKTHROUGHES_ROUTER_PREFIX = '/walkthroughes'
 
+SIGN_UP_URL = '/sign-up'
+
 SESSION_TTL = 3 * 24 * 60 * 60
