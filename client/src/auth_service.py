@@ -39,7 +39,10 @@ class AuthService:
 
         return response
 
-    def load_current_user(self):
+    def me(self):
+        if self.authorized_session is None:
+            return
+
         response = self.authorized_session.get(ME_URL)
 
         if response.ok:
