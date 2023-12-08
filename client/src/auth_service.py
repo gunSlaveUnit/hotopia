@@ -13,7 +13,7 @@ class AuthService:
         super().__init__()
 
         self.current_user: Optional[User] = None
-        self.authorized_session:Optional[Session] = None
+        self.authorized_session: Optional[Session] = None
 
     def _user_access(self, url: str, data: Union[UserSignUpSchema, UserSignInSchema]):
         response = requests.post(url, json=data.model_dump())
