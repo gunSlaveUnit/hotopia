@@ -107,9 +107,18 @@ RootLayout:
                     app.root.ids.screen_manager.current = "sign_in_screen"
                     app.root.ids.screen_manager.transition.direction = "right"
 
+<HobbyCard>:
+    adaptive_height: True
+    orientation: "vertical"
+
+    Label:
+        text: "Yes"
+
+
 <ExploreScreen>:
     MDScrollView:
         MDBoxLayout:
             id: hobbies
 
+            adaptive_height: True
             orientation: "vertical"
