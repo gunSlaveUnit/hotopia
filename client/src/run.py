@@ -22,7 +22,19 @@ class SignInScreen(MDScreen):
 
 
 class SignUpScreen(MDScreen):
-    pass
+    def sign_up(self):
+        email = self.ids.email_input.text
+        account_name = self.ids.account_name_input.text
+        password = self.ids.password_input.text
+
+        data = UserSignUpSchema(
+            email=email,
+            account_name=account_name,
+            password=password,
+        )
+
+        if hotopia.auth_service.sign_up(data).ok:
+            print("OK")
 
 
 class ExploreScreen(MDScreen):
