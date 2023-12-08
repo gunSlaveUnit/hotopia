@@ -5,7 +5,7 @@ from kivy import Config
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import NumericProperty, StringProperty
 
-from client.src.settings import HOBBIES_URL
+from client.src.settings import HOBBIES_URL, MEDIA_URL
 
 # Don't move it from here.
 Config.set('graphics', 'width', '360')
@@ -64,7 +64,7 @@ class HobbyCard(ButtonBehavior, MDBoxLayout):
     item_id = NumericProperty()
     title = StringProperty()
     short_description = StringProperty()
-    picture_filename = StringProperty()
+    picture_url = StringProperty()
 
 
 class ExploreScreen(MDScreen):
@@ -87,7 +87,7 @@ class ExploreScreen(MDScreen):
                     item_id=hobby["id"],
                     title=hobby["name"],
                     short_description=hobby["short_description"],
-                    picture_filename=hobby["card_picture_filename"],
+                    picture_url=f'{MEDIA_URL}/{hobby["card_picture_filename"]}',
                 )
             )
 
