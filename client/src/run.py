@@ -28,7 +28,7 @@ class SignInScreen(MDScreen):
         )
 
         if hotopia.auth_service.sign_in(data).ok:
-            print("OK")
+            hotopia.auth_service.me()
 
 
 class SignUpScreen(MDScreen):
@@ -44,7 +44,7 @@ class SignUpScreen(MDScreen):
         )
 
         if hotopia.auth_service.sign_up(data).ok:
-            print("OK")
+            hotopia.auth_service.me()
 
 
 class ExploreScreen(MDScreen):
