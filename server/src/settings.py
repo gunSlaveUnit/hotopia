@@ -15,5 +15,6 @@ API_VERSION_1_PREFIX = API_PREFIX + '/v1'
 WALKTHROUGHES_ROUTER_PREFIX = '/walkthroughes'
 
 SIGN_UP_URL = '/sign-up'
+SIGN_IN_URL = '/sign-in'
 
 SESSION_TTL = 3 * 24 * 60 * 60
