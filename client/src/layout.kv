@@ -111,8 +111,11 @@ RootLayout:
     adaptive_height: True
     orientation: "vertical"
 
-    Label:
-        text: "Yes"
+    MDLabel:
+        text: self.parent.title
+
+    MDLabel:
+        text: self.parent.short_description
 
 
 <ExploreScreen>:
