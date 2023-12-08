@@ -86,7 +86,7 @@ async def sign_in(
     return response
 
 
-@router.post(SIGN_OUT_URL, response_model=JSONResponse)
+@router.post(SIGN_OUT_URL)
 async def sign_out(
         session: str = Cookie(),
         session_storage=Depends(get_session_storage)
