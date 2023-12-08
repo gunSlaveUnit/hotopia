@@ -2,8 +2,8 @@ from pathlib import Path
 
 DEBUG = True
 
-BASE_PATH = Path(__file__).resolve().parent.parent.parent
-MEDIA_PATH = BASE_PATH / 'media'
+HOST = '127.0.0.1'
+PORT = 8000
 
 API_PREFIX = '/api'
 MEDIA_PREFIX = '/media'
@@ -20,3 +20,6 @@ SIGN_OUT_URL = '/sign-out'
 ME_URL = '/me'
 
 SESSION_TTL = 3 * 24 * 60 * 60
+
+BASE_PATH = Path(__file__).resolve().parent.parent.parent
+MEDIA_PATH = BASE_PATH / 'media'
