@@ -4,21 +4,21 @@ from typing import Optional
 
 from starlette import status
 from sqlalchemy import select, func
+from starlette.responses import JSONResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import APIRouter, Depends, HTTPException
-from starlette.responses import JSONResponse
 
 from core.models.users import User
 from core.utils.auth import authenticate_user
-from settings import AUTH_ROUTER_PREFIX, SESSION_TTL
+from core.utils.db import get_db, get_session_storage
 from server.src.core.utils.crypt import get_password_hash
 from api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
-from core.utils.db import get_db, get_session_storage
+from settings import AUTH_ROUTER_PREFIX, SESSION_TTL, SIGN_UP_URL, SIGN_IN_URL
 
 router = APIRouter(prefix=AUTH_ROUTER_PREFIX)
 
 
-@router.post('/sign-up')
+@router.post(SIGN_UP_URL)
 async def sign_up(
         data: UserSignUpSchema,
         db: AsyncSession = Depends(get_db),
@@ -61,7 +61,7 @@ async def sign_up(
     )
 
 
-@router.post('/sign-in/')
+@router.post(SIGN_IN_URL)
 async def sign_in(
         data: UserSignInSchema,
         db: AsyncSession = Depends(get_db),
