@@ -6,14 +6,14 @@ from starlette import status
 from sqlalchemy import select, func
 from starlette.responses import JSONResponse
 from sqlalchemy.ext.asyncio import AsyncSession
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Cookie
 
 from core.models.users import User
 from core.utils.auth import authenticate_user
 from core.utils.db import get_db, get_session_storage
 from server.src.core.utils.crypt import get_password_hash
 from api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
-from settings import AUTH_ROUTER_PREFIX, SESSION_TTL, SIGN_UP_URL, SIGN_IN_URL
+from settings import AUTH_ROUTER_PREFIX, SESSION_TTL, SIGN_UP_URL, SIGN_IN_URL, SIGN_OUT_URL
 
 router = APIRouter(prefix=AUTH_ROUTER_PREFIX)
 
@@ -84,3 +84,24 @@ async def sign_in(
     await user.update(db, {"login_at": datetime.datetime.now()})
 
     return response
+
+
+@router.post(SIGN_OUT_URL, response_model=JSONResponse)
+async def sign_out(
+        session: str = Cookie(),
+        session_storage=Depends(get_session_storage)
+) -> JSONResponse:
+    """Deletes a user session."""
+
+    if session in session_storage:
+        session_storage.delete(session)
+
+        response = JSONResponse({"detail": f"Session {session} was removed"})
+        response.delete_cookie('session')
+
+        return response
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Session {session} not found"
+        )
