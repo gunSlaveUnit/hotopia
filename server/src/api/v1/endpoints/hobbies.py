@@ -11,7 +11,7 @@ from server.src.api.v1.schemas.hobbies import HobbyDBSchema, HobbyCreateSchema
 router = APIRouter(prefix=HOBBIES_ROUTER_PREFIX)
 
 
-@router.get('/', response_model=List[HobbyDBSchema])
+@router.get('', response_model=List[HobbyDBSchema])
 async def items(db: AsyncSession = Depends(get_db)) -> List[Hobby]:
     return [_ async for _ in Hobby.every(db)]
 
@@ -21,7 +21,7 @@ async def item(item_id: int, db: AsyncSession = Depends(get_db)) -> Optional[Hob
     return await Hobby.by_id(db, item_id)
 
 
-@router.post('/', response_model=HobbyDBSchema)
+@router.post('', response_model=HobbyDBSchema)
 async def create(
         data: HobbyCreateSchema,
         db: AsyncSession = Depends(get_db)
