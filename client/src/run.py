@@ -10,7 +10,7 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.boxlayout import MDBoxLayout
 
 from client.src.auth_service import AuthService
-from api.v1.schemas.users import UserSignUpSchema
+from api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
 
 
 class RootLayout(MDBoxLayout):
@@ -18,7 +18,17 @@ class RootLayout(MDBoxLayout):
 
 
 class SignInScreen(MDScreen):
-    pass
+    def sign_in(self):
+        account_name = self.ids.account_name_input.text
+        password = self.ids.password_input.text
+
+        data = UserSignInSchema(
+            account_name=account_name,
+            password=password,
+        )
+
+        if hotopia.auth_service.sign_in(data).ok:
+            print("OK")
 
 
 class SignUpScreen(MDScreen):

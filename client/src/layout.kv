@@ -5,6 +5,7 @@ RootLayout:
         id: screen_manager
 
         SignInScreen:
+            id: sign_in_screen
             name: "sign_in_screen"
 
         SignUpScreen:
@@ -22,16 +23,21 @@ RootLayout:
         MDLabel:
             text: "Account name"
 
-        MDTextField
+        MDTextField:
+            id: account_name_input
 
         MDLabel:
             text: "Password"
 
-        MDTextField
+        MDTextField:
+            id: password_input
 
         MDRectangleFlatButton:
             text: "Log in"
             size_hint_x: 1.0
+
+            on_release:
+                app.root.ids.sign_in_screen.sign_in()
 
         MDGridLayout:
             rows: 2
@@ -81,6 +87,7 @@ RootLayout:
         MDRectangleFlatButton:
             size_hint_x: 1.0
             text: "Create a new account"
+
             on_release:
                 app.root.ids.sign_up_screen.sign_up()
 
