@@ -8,6 +8,7 @@ RootLayout:
             name: "sign_in_screen"
 
         SignUpScreen:
+            id: sign_up_screen
             name: "sign_up_screen"
 
         ExploreScreen:
@@ -62,21 +63,26 @@ RootLayout:
         MDLabel:
             text: "Email address"
 
-        MDTextField
+        MDTextField:
+            id: email_input
 
         MDLabel:
             text: "Account name"
 
-        MDTextField
+        MDTextField:
+            id: account_name_input
 
         MDLabel:
             text: "Password"
 
-        MDTextField
+        MDTextField:
+            id: password_input
 
         MDRectangleFlatButton:
             size_hint_x: 1.0
             text: "Create a new account"
+            on_release:
+                app.root.ids.sign_up_screen.sign_up()
 
         MDGridLayout:
             cols: 2
