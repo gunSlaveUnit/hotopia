@@ -76,7 +76,8 @@ class ExploreScreen(MDScreen):
             return response.json()
 
     def map_hobbies(self, extracted_hobbies: List[dict]) -> None:
-        pass
+        for _ in extracted_hobbies:
+            self.ids.hobbies.add_widget(HobbyCard())
 
 
 class Hotopia(MDApp):
