@@ -29,6 +29,8 @@ class SignInScreen(MDScreen):
 
         if hotopia.auth_service.sign_in(data).ok:
             hotopia.auth_service.me()
+            hotopia.root.ids.screen_manager.current = "explore_screen"
+            hotopia.root.ids.screen_manager.transition.direction = "up"
 
 
 class SignUpScreen(MDScreen):
