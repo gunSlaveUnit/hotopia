@@ -70,8 +70,8 @@ class ExploreScreen(MDScreen):
         extracted_hobbies = self.fetch_hobbies()
         self.map_hobbies(extracted_hobbies)
 
-    # TODO: that's bad i think, need to move it for some service
-    def fetch_hobbies(self) -> List[dict]:
+    @staticmethod
+    def fetch_hobbies() -> List[dict]:
         response = requests.get(HOBBIES_URL)
         if response.ok:
             return response.json()
