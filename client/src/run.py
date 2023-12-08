@@ -63,7 +63,20 @@ class HobbyCard(ButtonBehavior, BoxLayout):
 
 
 class ExploreScreen(MDScreen):
-    pass
+    def load(self) -> None:
+        self.ids.hobbies.clear_widgets()
+
+        extracted_hobbies = self.fetch_hobbies()
+        self.map_hobbies(extracted_hobbies)
+
+    # TODO: that's bad i think, need to move it for some service
+    def fetch_hobbies(self) -> List[dict]:
+        response = requests.get(HOBBIES_URL)
+        if response.ok:
+            return response.json()
+
+    def map_hobbies(self, extracted_hobbies: List[dict]) -> None:
+        pass
 
 
 class Hotopia(MDApp):
