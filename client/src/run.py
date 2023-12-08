@@ -1,4 +1,11 @@
+from typing import List
+
+import requests
 from kivy import Config
+from kivy.uix.behaviors import ButtonBehavior
+from kivy.uix.boxlayout import BoxLayout
+
+from client.src.settings import HOBBIES_URL
 
 # Don't move it from here.
 Config.set('graphics', 'width', '360')
@@ -49,6 +56,10 @@ class SignUpScreen(MDScreen):
             hotopia.auth_service.me()
             hotopia.root.ids.screen_manager.current = "explore_screen"
             hotopia.root.ids.screen_manager.transition.direction = "up"
+
+
+class HobbyCard(ButtonBehavior, BoxLayout):
+    pass
 
 
 class ExploreScreen(MDScreen):
