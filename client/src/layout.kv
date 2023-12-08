@@ -119,14 +119,12 @@ RootLayout:
             size: self.size
 
     MDLabel:
+        adaptive_height: True
         text: self.parent.title
 
     MDLabel:
+        adaptive_height: True
         text: self.parent.short_description
-
-    AsyncImage:
-        source: self.parent.picture_url
-
 
 <ExploreScreen>:
     MDScrollView:
