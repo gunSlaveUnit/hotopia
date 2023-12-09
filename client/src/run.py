@@ -81,6 +81,8 @@ class ExploreScreen(MDScreen):
             return response.json()
 
     def map_hobbies(self, extracted_hobbies: List[dict]) -> None:
+        self.ids.hobbies.clear_widgets()
+
         for hobby in extracted_hobbies:
             self.ids.hobbies.add_widget(
                 HobbyCard(
