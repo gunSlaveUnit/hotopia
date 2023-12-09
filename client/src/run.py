@@ -160,7 +160,6 @@ class ModuleScreen(MDScreen):
                 ModuleCard(
                     item_id=unit["id"],
                     title=unit["name"],
-                    description=unit["description"],
                 )
             )
 
