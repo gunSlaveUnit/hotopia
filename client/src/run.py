@@ -169,6 +169,10 @@ class UnitScreen(MDScreen):
     title = StringProperty()
     filename = StringProperty()
 
+    def load(self, unit_id):
+        self.fetch_unit(unit_id)
+        self.map_content(self.fetch_content(self.filename))
+
     def fetch_unit(self, unit_id: int) -> None:
         response = requests.get(f'{UNITS_URL}/{unit_id}')
         if response.ok:
