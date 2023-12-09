@@ -127,6 +127,8 @@ class HobbyScreen(MDScreen):
             key=lambda item: (item['previous_module_id'] is not None, item['previous_module_id'])
         )
 
+        self.ids.modules.clear_widgets()
+
         for module in sorted_modules:
             self.ids.modules.add_widget(
                 ModuleCard(
