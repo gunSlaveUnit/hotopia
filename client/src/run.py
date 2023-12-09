@@ -164,6 +164,10 @@ class ModuleScreen(MDScreen):
             )
 
 
+class UnitScreen(MDScreen):
+    pass
+
+
 class Hotopia(MDApp):
     def __init__(self):
         super().__init__()
