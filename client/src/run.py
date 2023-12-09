@@ -161,7 +161,12 @@ class ModuleScreen(MDScreen):
             return response.json()
 
     def map_units(self, extracted_units: List[dict]) -> None:
-        for unit in extracted_units:
+        sorted_units = sorted(
+            extracted_units,
+            key=lambda item: (item['previous_unit_id'] is not None, item['previous_unit_id'])
+        )
+
+        for unit in sorted_units:
             self.ids.units.add_widget(
                 UnitCard(
                     item_id=unit["id"],
