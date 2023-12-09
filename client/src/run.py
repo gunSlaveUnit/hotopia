@@ -169,6 +169,8 @@ class ModuleScreen(MDScreen):
             key=lambda item: (item['previous_unit_id'] is not None, item['previous_unit_id'])
         )
 
+        self.ids.units.clear_widgets()
+
         for unit in sorted_units:
             self.ids.units.add_widget(
                 UnitCard(
