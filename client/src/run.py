@@ -167,6 +167,9 @@ class ModuleScreen(MDScreen):
 
 class UnitScreen(MDScreen):
     title = StringProperty()
+    filename = StringProperty()
+
+
 
 
 class Hotopia(MDApp):
