@@ -130,6 +130,9 @@ class HobbyScreen(MDScreen):
             )
 
 
+class ModuleScreen(MDScreen):
+    pass
+
 class Hotopia(MDApp):
     def __init__(self):
         super().__init__()
