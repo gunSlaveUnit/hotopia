@@ -154,6 +154,16 @@ class ModuleScreen(MDScreen):
         if response.ok:
             return response.json()
 
+    def map_units(self, extracted_units: List[dict]) -> None:
+        for unit in extracted_units:
+            self.ids.units.add_widget(
+                ModuleCard(
+                    item_id=unit["id"],
+                    title=unit["name"],
+                    description=unit["description"],
+                )
+            )
+
 
 class Hotopia(MDApp):
     def __init__(self):
