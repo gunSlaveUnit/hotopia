@@ -110,22 +110,28 @@ RootLayout:
 <HobbyCard>:
     adaptive_height: True
     orientation: "vertical"
-    padding: app.default_margin
 
     canvas:
         Color:
-            rgba: 1, 1, 1, 1
+            rgb: app.theme_cls.bg_dark
         RoundedRectangle:
             pos: self.pos
             size: self.size
-            source: "lorem_ipsum.jpg"
 
     MDLabel:
         adaptive_height: True
+        padding: app.default_margin
         text: self.parent.title
 
+    AsyncImage:
+        height: dp(220)
+        fit_mode: "cover"
+        size_hint_y: None
+        source: self.parent.picture_url
+
     MDLabel:
         adaptive_height: True
+        padding: app.default_margin
         text: self.parent.short_description
 
 <ExploreScreen>:
