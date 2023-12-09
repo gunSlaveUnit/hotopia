@@ -169,9 +169,14 @@ class UnitScreen(MDScreen):
     title = StringProperty()
     filename = StringProperty()
 
+    @staticmethod
+    def fetch_content(filename) -> str:
+        response = requests.get(f'{MEDIA_URL}/{filename}')
+        if response.ok:
+            return response.text
+
     def map_content(self, content: str) -> None:
         self.ids.content.clear_widgets()
-
         self.ids.content.add_widget(Builder.load_string(content))
 
 
