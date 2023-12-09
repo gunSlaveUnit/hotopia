@@ -207,6 +207,10 @@ RootLayout:
                 orientation: "vertical"
                 spacing: app.default_margin
 
+<UnitCard>:
+    adaptive_height: True
+    orientation: "vertical"
+
 <ModuleScreen>:
     MDScrollView:
         MDBoxLayout:
@@ -217,7 +221,7 @@ RootLayout:
 
             MDLabel:
                 adaptive_height: True
-                text: self.parent.parent.parent.parent.title
+                text: self.parent.parent.parent.title
 
             MDBoxLayout:
                 id: units
