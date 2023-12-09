@@ -115,7 +115,7 @@ class HobbyScreen(MDScreen):
 
     @staticmethod
     def fetch_modules(hobby_id: int) -> List[dict]:
-        response = requests.get(MODULES_URL, params={"hobby_id": hobby_id})
+        response = requests.get(f'{MODULES_URL}/', params={"hobby_id": hobby_id})
         if response.ok:
             return response.json()
 
