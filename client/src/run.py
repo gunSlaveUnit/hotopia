@@ -148,6 +148,12 @@ class ModuleScreen(MDScreen):
             module = response.json()
             self.title = module["name"]
 
+    @staticmethod
+    def fetch_units(module_id: int) -> List[dict]:
+        response = requests.get(f'{UNITS_URL}/', params={"module_id": module_id})
+        if response.ok:
+            return response.json()
+
 
 class Hotopia(MDApp):
     def __init__(self):
