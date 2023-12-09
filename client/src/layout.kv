@@ -156,6 +156,13 @@ RootLayout:
     adaptive_height: True
     orientation: "vertical"
 
+    canvas:
+        Color:
+            rgb: app.theme_cls.bg_dark
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+
 <HobbyScreen>:
     MDScrollView:
         MDBoxLayout:
