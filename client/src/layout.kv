@@ -115,6 +115,10 @@ RootLayout:
     adaptive_height: True
     orientation: "vertical"
 
+    on_release:
+        app.root.ids.hobby_screen.load(self.title)
+        app.root.ids.screen_manager.current = "hobby_screen"
+
     canvas:
         Color:
             rgb: app.theme_cls.bg_dark
