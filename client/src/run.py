@@ -136,7 +136,11 @@ class UnitCard(ButtonBehavior, MDBoxLayout):
 
 
 class ModuleScreen(MDScreen):
-    pass
+    title = StringProperty()
+
+    def load(self, module_id):
+        self.fetch_module(module_id)
+        self.map_units(self.fetch_units(module_id))
 
 
 class Hotopia(MDApp):
