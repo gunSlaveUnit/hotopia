@@ -157,7 +157,7 @@ class ModuleScreen(MDScreen):
     def map_units(self, extracted_units: List[dict]) -> None:
         for unit in extracted_units:
             self.ids.units.add_widget(
-                ModuleCard(
+                UnitCard(
                     item_id=unit["id"],
                     title=unit["name"],
                 )
