@@ -169,7 +169,10 @@ class UnitScreen(MDScreen):
     title = StringProperty()
     filename = StringProperty()
 
+    def map_content(self, content: str) -> None:
+        self.ids.content.clear_widgets()
 
+        self.ids.content.add_widget(Builder.load_string(content))
 
 
 class Hotopia(MDApp):
