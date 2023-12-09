@@ -126,6 +126,7 @@ RootLayout:
     on_release:
         app.root.ids.hobby_screen.load(self.item_id)
         app.root.ids.screen_manager.current = "hobby_screen"
+        app.root.ids.screen_manager.transition.direction = "left"
 
     canvas:
         Color:
