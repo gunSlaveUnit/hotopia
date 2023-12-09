@@ -163,10 +163,19 @@ RootLayout:
             pos: self.pos
             size: self.size
 
-    MDLabel:
+    MDBoxLayout:
         adaptive_height: True
+        orientation: "vertical"
         padding: app.default_margin
-        text: self.parent.title
+        spacing: app.default_margin
+
+        MDLabel:
+            adaptive_height: True
+            text: self.parent.parent.title
+
+        MDLabel:
+            adaptive_height: True
+            text: self.parent.parent.description
 
 <HobbyScreen>:
     MDScrollView:
