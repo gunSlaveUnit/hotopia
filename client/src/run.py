@@ -5,7 +5,7 @@ from kivy import Config
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import NumericProperty, StringProperty
 
-from client.src.settings import HOBBIES_URL, MEDIA_URL
+from client.src.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL
 
 # Don't move it from here.
 Config.set('graphics', 'width', '360')
@@ -93,7 +93,19 @@ class ExploreScreen(MDScreen):
 
 
 class HobbyScreen(MDScreen):
-    pass
+    title = StringProperty()
+    long_description = StringProperty()
+
+    def load(self, hobby_id):
+        self.fetch_hobby(hobby_id)
+        self.fetch_modules(hobby_id)
+
+    def fetch_hobby(self, hobby_id: int) -> None:
+        response = requests.get(f'{HOBBIES_URL}/{hobby_id}')
+        if response.ok:
+            hobby = response.json()
+            self.title = hobby["name"]
+            self.long_description = hobby["long_description"]
 
 
 class Hotopia(MDApp):
