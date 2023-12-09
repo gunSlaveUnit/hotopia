@@ -169,6 +169,13 @@ class UnitScreen(MDScreen):
     title = StringProperty()
     filename = StringProperty()
 
+    def fetch_unit(self, unit_id: int) -> None:
+        response = requests.get(f'{UNITS_URL}/{unit_id}')
+        if response.ok:
+            unit = response.json()
+            self.title = unit["name"]
+            self.filename = unit["content_filename"]
+
     @staticmethod
     def fetch_content(filename) -> str:
         response = requests.get(f'{MEDIA_URL}/{filename}')
