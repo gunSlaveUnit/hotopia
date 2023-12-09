@@ -215,6 +215,10 @@ RootLayout:
     adaptive_height: True
     orientation: "vertical"
 
+    on_release:
+        app.root.ids.unit_screen.load(self.item_id)
+        app.root.ids.screen_manager.current = "unit_screen"
+
     canvas:
         Color:
             rgb: app.theme_cls.bg_dark
