@@ -104,7 +104,7 @@ class HobbyScreen(MDScreen):
 
     def load(self, hobby_id):
         self.fetch_hobby(hobby_id)
-        self.fetch_modules(hobby_id)
+        self.map_modules(self.fetch_modules(hobby_id))
 
     def fetch_hobby(self, hobby_id: int) -> None:
         response = requests.get(f'{HOBBIES_URL}/{hobby_id}')
@@ -112,6 +112,22 @@ class HobbyScreen(MDScreen):
             hobby = response.json()
             self.title = hobby["name"]
             self.long_description = hobby["long_description"]
+
+    @staticmethod
+    def fetch_modules(hobby_id: int) -> List[dict]:
+        response = requests.get(MODULES_URL, params={"hobby_id": hobby_id})
+        if response.ok:
+            return response.json()
+
+    def map_modules(self, extracted_modules: List[dict]) -> None:
+        for module in extracted_modules:
+            self.ids.modules.add_widget(
+                ModuleCard(
+                    item_id=module["id"],
+                    title=module["name"],
+                    description=module["description"],
+                )
+            )
 
 
 class Hotopia(MDApp):
