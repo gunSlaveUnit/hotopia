@@ -92,6 +92,12 @@ class ExploreScreen(MDScreen):
             )
 
 
+class ModuleCard(ButtonBehavior, MDBoxLayout):
+    item_id = NumericProperty()
+    title = StringProperty()
+    description = StringProperty()
+
+
 class HobbyScreen(MDScreen):
     title = StringProperty()
     long_description = StringProperty()
