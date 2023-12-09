@@ -1,3 +1,4 @@
+from pprint import pprint
 from typing import List
 
 import requests
@@ -120,7 +121,12 @@ class HobbyScreen(MDScreen):
             return response.json()
 
     def map_modules(self, extracted_modules: List[dict]) -> None:
-        for module in extracted_modules:
+        sorted_modules = sorted(
+            extracted_modules,
+            key=lambda item: (item['previous_module_id'] is not None, item['previous_module_id'])
+        )
+
+        for module in sorted_modules:
             self.ids.modules.add_widget(
                 ModuleCard(
                     item_id=module["id"],
