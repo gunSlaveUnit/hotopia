@@ -1,3 +1,4 @@
+from io import BytesIO
 from typing import List
 
 import requests
@@ -165,7 +166,7 @@ class ModuleScreen(MDScreen):
 
 
 class UnitScreen(MDScreen):
-    pass
+    title = StringProperty()
 
 
 class Hotopia(MDApp):
