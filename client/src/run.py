@@ -5,7 +5,7 @@ from kivy import Config
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.properties import NumericProperty, StringProperty
 
-from client.src.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL
+from client.src.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL, UNITS_URL
 
 # Don't move it from here.
 Config.set('graphics', 'width', '360')
@@ -130,8 +130,14 @@ class HobbyScreen(MDScreen):
             )
 
 
+class UnitCard(ButtonBehavior, MDBoxLayout):
+    item_id = NumericProperty()
+    title = StringProperty()
+
+
 class ModuleScreen(MDScreen):
     pass
+
 
 class Hotopia(MDApp):
     def __init__(self):
