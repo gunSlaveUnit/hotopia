@@ -163,6 +163,11 @@ RootLayout:
             pos: self.pos
             size: self.size
 
+    MDLabel:
+        adaptive_height: True
+        padding: app.default_margin
+        text: self.parent.title
+
 <HobbyScreen>:
     MDScrollView:
         MDBoxLayout:
