@@ -118,7 +118,7 @@ class HobbyScreen(MDScreen):
 
     @staticmethod
     def fetch_modules(hobby_id: int) -> List[dict]:
-        response = requests.get(f'{MODULES_URL}/', params={"hobby_id": hobby_id})
+        response = requests.get(f'{MODULES_URL}', params={"hobby_id": hobby_id})
         if response.ok:
             return response.json()
 
@@ -162,7 +162,7 @@ class ModuleScreen(MDScreen):
 
     @staticmethod
     def fetch_units(module_id: int) -> List[dict]:
-        response = requests.get(f'{UNITS_URL}/', params={"module_id": module_id})
+        response = requests.get(f'{UNITS_URL}', params={"module_id": module_id})
         if response.ok:
             return response.json()
 
@@ -204,12 +204,12 @@ class UnitScreen(MDScreen):
 
     def set_complete_button_text(self, unit_id: int) -> None:
         is_unit_complete = self.check_walkthrough(unit_id)
-        self.complete_button_text = "Mark as done" if not is_unit_complete else "Mark as undone"
+        self.complete_button_text = "Mark as undone" if not is_unit_complete else "Mark as done"
 
     @staticmethod
     def check_walkthrough(unit_id: int) -> bool:
         response = requests.get(
-            f'{WALKTHROUGHES_URL}/',
+            f'{WALKTHROUGHES_URL}',
             params={
                 "user_id": hotopia.auth_service.current_user.id,
                 "unit_id": unit_id,
