@@ -141,8 +141,8 @@ class HobbyScreen(MDScreen):
 
 
 class UnitCard(ButtonBehavior, MDBoxLayout):
-    item_id = NumericProperty()
     title = StringProperty()
+    item_id = NumericProperty()
 
 
 class ModuleScreen(MDScreen):
@@ -187,9 +187,11 @@ class UnitScreen(MDScreen):
     title = StringProperty()
     item_id = NumericProperty()
     filename = StringProperty()
+    complete_button_text = StringProperty()
 
     def load(self, unit_id):
         self.fetch_unit(unit_id)
+        self.set_complete_button_text(unit_id)
         self.map_content(self.fetch_content(self.filename))
 
     def fetch_unit(self, unit_id: int) -> None:
@@ -199,6 +201,23 @@ class UnitScreen(MDScreen):
             self.item_id = unit["id"]
             self.title = unit["name"]
             self.filename = unit["content_filename"]
+
+    def set_complete_button_text(self, unit_id: int) -> None:
+        is_unit_complete = self.check_walkthrough(unit_id)
+        self.complete_button_text = "Mark as done" if not is_unit_complete else "Mark as undone"
+
+    @staticmethod
+    def check_walkthrough(unit_id: int) -> bool:
+        response = requests.get(
+            f'{WALKTHROUGHES_URL}/',
+            params={
+                "user_id": hotopia.auth_service.current_user.id,
+                "unit_id": unit_id,
+            }
+        )
+        if response.ok:
+            return True
+        return False
 
     @staticmethod
     def fetch_content(filename) -> str:
