@@ -233,8 +233,6 @@ RootLayout:
         app.root.ids.unit_screen.load(self.item_id)
         app.root.ids.screen_manager.current = "unit_screen"
         app.root.ids.screen_manager.transition.direction = "left"
-        app.root.ids.module_screen.selected_unit_id = self.item_id
-        app.root.ids.module_screen.set_next_unit_by_selected()
 
     canvas:
         Color:
@@ -308,12 +306,8 @@ RootLayout:
                 orientation: "vertical"
 
             MDRectangleFlatButton:
-                text: "Next"
+                text: "Done"
                 size_hint_x: 1.0
 
                 on_release:
-                    next_unit_id = app.root.ids.module_screen.next_unit_id
-                    app.root.ids.module_screen.selected_unit_id = next_unit_id
-                    if next_unit_id > 0:\
-                    app.root.ids.unit_screen.load(next_unit_id);
-                    app.root.ids.module_screen.set_next_unit_by_selected()
+                    app.root.ids.unit_screen.mark_walkthrough(self.parent.parent.parent.item_id)

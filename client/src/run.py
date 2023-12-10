@@ -3,9 +3,10 @@ from typing import List
 import requests
 from kivy import Config
 from kivy.uix.behaviors import ButtonBehavior
-from kivy.properties import NumericProperty, StringProperty
+from kivy.properties import NumericProperty, StringProperty, ListProperty
 
-from client.src.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL, UNITS_URL
+from api.v1.schemas.walkthroughes import WalkthroughCreateSchema
+from client.src.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL, UNITS_URL, WALKTHROUGHES_URL
 
 # Don't move it from here.
 Config.set('graphics', 'width', '360')
@@ -145,9 +146,8 @@ class UnitCard(ButtonBehavior, MDBoxLayout):
 
 
 class ModuleScreen(MDScreen):
+    units = ListProperty()
     title = StringProperty()
-    next_unit_id = NumericProperty()
-    selected_unit_id = NumericProperty()
 
     def load(self, module_id):
         self.fetch_module(module_id)
@@ -182,16 +182,10 @@ class ModuleScreen(MDScreen):
                 )
             )
 
-    def set_next_unit_by_selected(self):
-        for unit in self.units:
-            if unit['previous_unit_id'] == self.selected_unit_id:
-                self.next_unit_id = unit['id']
-                return
-        self.next_unit_id = -1
-
 
 class UnitScreen(MDScreen):
     title = StringProperty()
+    item_id = NumericProperty()
     filename = StringProperty()
 
     def load(self, unit_id):
@@ -202,6 +196,7 @@ class UnitScreen(MDScreen):
         response = requests.get(f'{UNITS_URL}/{unit_id}')
         if response.ok:
             unit = response.json()
+            self.item_id = unit["id"]
             self.title = unit["name"]
             self.filename = unit["content_filename"]
 
@@ -214,6 +209,17 @@ class UnitScreen(MDScreen):
     def map_content(self, content: str) -> None:
         self.ids.content.clear_widgets()
         self.ids.content.add_widget(Builder.load_string(content))
+
+    @staticmethod
+    def mark_walkthrough(unit_id: int):
+        user_id = hotopia.auth_service.current_user.id
+
+        data = WalkthroughCreateSchema(
+            user_id=user_id,
+            unit_id=unit_id,
+        )
+
+        requests.post(WALKTHROUGHES_URL, json=data.model_dump())
 
 
 class Hotopia(MDApp):
