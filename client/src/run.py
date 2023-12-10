@@ -146,6 +146,7 @@ class UnitCard(ButtonBehavior, MDBoxLayout):
 
 class ModuleScreen(MDScreen):
     title = StringProperty()
+    selected_unit_id = NumericProperty()
 
     def load(self, module_id):
         self.fetch_module(module_id)

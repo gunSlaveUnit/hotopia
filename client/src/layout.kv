@@ -233,6 +233,7 @@ RootLayout:
         app.root.ids.unit_screen.load(self.item_id)
         app.root.ids.screen_manager.current = "unit_screen"
         app.root.ids.screen_manager.transition.direction = "left"
+        app.root.ids.module_screen.selected_unit_id = self.item_id
 
     canvas:
         Color:
