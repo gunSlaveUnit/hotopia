@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 import requests
 from kivy import Config
@@ -190,6 +190,12 @@ class UnitScreen(MDScreen):
     is_unit_complete = BooleanProperty()
     complete_button_text = StringProperty()
 
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+
+        self.related_walkthrough_id: Optional[int] = None
+
     def load(self, unit_id):
         self.fetch_unit(unit_id)
         self.set_complete_button_text(unit_id)
@@ -204,11 +210,17 @@ class UnitScreen(MDScreen):
             self.filename = unit["content_filename"]
 
     def set_complete_button_text(self, unit_id: int) -> None:
-        self.is_unit_complete = self.check_walkthrough(unit_id)
-        self.complete_button_text = "Mark as undone" if not self.is_unit_complete else "Mark as done"
+        self.related_walkthrough_id = self.get_related_walkthrough_id(unit_id)
+
+        if self.related_walkthrough_id:
+            self.is_unit_complete = True
+            self.complete_button_text = "Mark as undone"
+        else:
+            self.is_unit_complete = False
+            self.complete_button_text = "Mark as done"
 
     @staticmethod
-    def check_walkthrough(unit_id: int) -> bool:
+    def get_related_walkthrough_id(unit_id: int) -> Optional[int]:
         response = requests.get(
             f'{WALKTHROUGHES_URL}',
             params={
@@ -216,9 +228,12 @@ class UnitScreen(MDScreen):
                 "unit_id": unit_id,
             }
         )
+
         if response.ok:
-            return True
-        return False
+            if response.json():
+                return response.json()[0]["id"]
+
+        return None
 
     @staticmethod
     def fetch_content(filename) -> str:
@@ -230,16 +245,20 @@ class UnitScreen(MDScreen):
         self.ids.content.clear_widgets()
         self.ids.content.add_widget(Builder.load_string(content))
 
-    @staticmethod
-    def mark_walkthrough(unit_id: int):
+    def process_walkthrough(self):
         user_id = hotopia.auth_service.current_user.id
 
         data = WalkthroughCreateSchema(
             user_id=user_id,
-            unit_id=unit_id,
+            unit_id=self.item_id,
         )
 
-        requests.post(WALKTHROUGHES_URL, json=data.model_dump())
+        if self.is_unit_complete:
+            requests.delete(f'{WALKTHROUGHES_URL}/{self.related_walkthrough_id}')
+        else:
+            requests.post(WALKTHROUGHES_URL, json=data.model_dump())
+
+        self.set_complete_button_text(self.item_id)
 
 
 class Hotopia(MDApp):
