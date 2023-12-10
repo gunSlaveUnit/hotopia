@@ -31,3 +31,8 @@ async def items(
 @router.post('', response_model=WalkthroughDBSchema)
 async def create(data: WalkthroughCreateSchema, db: AsyncSession = Depends(get_db)):
     return await Walkthrough.create(db, data)
+
+
+@router.delete('/{item_id}')
+async def delete(item_id: int, db: AsyncSession = Depends(get_db)):
+    return await Walkthrough.delete(db, item_id)
