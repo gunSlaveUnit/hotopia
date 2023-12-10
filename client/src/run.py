@@ -3,7 +3,7 @@ from typing import List
 import requests
 from kivy import Config
 from kivy.uix.behaviors import ButtonBehavior
-from kivy.properties import NumericProperty, StringProperty, ListProperty
+from kivy.properties import NumericProperty, StringProperty, ListProperty, BooleanProperty
 
 from api.v1.schemas.walkthroughes import WalkthroughCreateSchema
 from client.src.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL, UNITS_URL, WALKTHROUGHES_URL
@@ -187,6 +187,7 @@ class UnitScreen(MDScreen):
     title = StringProperty()
     item_id = NumericProperty()
     filename = StringProperty()
+    is_unit_complete = BooleanProperty()
     complete_button_text = StringProperty()
 
     def load(self, unit_id):
@@ -203,8 +204,8 @@ class UnitScreen(MDScreen):
             self.filename = unit["content_filename"]
 
     def set_complete_button_text(self, unit_id: int) -> None:
-        is_unit_complete = self.check_walkthrough(unit_id)
-        self.complete_button_text = "Mark as undone" if not is_unit_complete else "Mark as done"
+        self.is_unit_complete = self.check_walkthrough(unit_id)
+        self.complete_button_text = "Mark as undone" if not self.is_unit_complete else "Mark as done"
 
     @staticmethod
     def check_walkthrough(unit_id: int) -> bool:
