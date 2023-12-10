@@ -9,6 +9,6 @@ from api.v1.schemas.walkthroughes import WalkthroughDBSchema, WalkthroughCreateS
 router = APIRouter(prefix=WALKTHROUGHES_ROUTER_PREFIX)
 
 
-@router.post('/', response_model=WalkthroughDBSchema)
+@router.post('', response_model=WalkthroughDBSchema)
 async def create(data: WalkthroughCreateSchema, db: AsyncSession = Depends(get_db)):
     return await Walkthrough.create(db, data)
