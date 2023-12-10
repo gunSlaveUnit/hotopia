@@ -48,8 +48,9 @@ class Entity(Base):
     @classmethod
     async def delete(cls, session: AsyncSession, item_id: int):
         item = await cls.by_id(session, item_id)
-        await session.delete(item)
-        await session.commit()
+        if item:
+            await session.delete(item)
+            await session.commit()
 
     def dict(self) -> dict:
         """
