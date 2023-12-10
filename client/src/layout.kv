@@ -234,6 +234,7 @@ RootLayout:
         app.root.ids.screen_manager.current = "unit_screen"
         app.root.ids.screen_manager.transition.direction = "left"
         app.root.ids.module_screen.selected_unit_id = self.item_id
+        app.root.ids.module_screen.set_next_unit_by_selected()
 
     canvas:
         Color:
@@ -309,3 +310,10 @@ RootLayout:
             MDRectangleFlatButton:
                 text: "Next"
                 size_hint_x: 1.0
+
+                on_release:
+                    next_unit_id = app.root.ids.module_screen.next_unit_id
+                    app.root.ids.module_screen.selected_unit_id = next_unit_id
+                    if next_unit_id > 0:\
+                    app.root.ids.unit_screen.load(next_unit_id);
+                    app.root.ids.module_screen.set_next_unit_by_selected()

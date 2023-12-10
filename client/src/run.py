@@ -146,11 +146,13 @@ class UnitCard(ButtonBehavior, MDBoxLayout):
 
 class ModuleScreen(MDScreen):
     title = StringProperty()
+    next_unit_id = NumericProperty()
     selected_unit_id = NumericProperty()
 
     def load(self, module_id):
         self.fetch_module(module_id)
-        self.map_units(self.fetch_units(module_id))
+        self.units = self.fetch_units(module_id)
+        self.map_units(self.units)
 
     def fetch_module(self, module_id: int) -> None:
         response = requests.get(f'{MODULES_URL}/{module_id}')
@@ -179,6 +181,13 @@ class ModuleScreen(MDScreen):
                     title=unit["name"],
                 )
             )
+
+    def set_next_unit_by_selected(self):
+        for unit in self.units:
+            if unit['previous_unit_id'] == self.selected_unit_id:
+                self.next_unit_id = unit['id']
+                return
+        self.next_unit_id = -1
 
 
 class UnitScreen(MDScreen):
