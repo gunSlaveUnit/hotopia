@@ -306,8 +306,8 @@ RootLayout:
                 orientation: "vertical"
 
             MDRectangleFlatButton:
-                text: self.parent.parent.parent.complete_button_text
                 size_hint_x: 1.0
+                text: self.parent.parent.parent.complete_button_text
 
                 on_release:
-                    app.root.ids.unit_screen.mark_walkthrough(self.parent.parent.parent.item_id)
+                    app.root.ids.unit_screen.process_walkthrough()
