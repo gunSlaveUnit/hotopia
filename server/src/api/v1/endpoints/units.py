@@ -11,7 +11,7 @@ from api.v1.schemas.units import UnitDBSchema, UnitCreateSchema
 router = APIRouter(prefix=UNITS_ROUTER_PREFIX)
 
 
-@router.get('/', response_model=List[UnitDBSchema])
+@router.get('', response_model=List[UnitDBSchema])
 async def items(
         module_id: Optional[int] = None,
         db: AsyncSession = Depends(get_db)

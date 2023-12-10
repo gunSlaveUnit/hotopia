@@ -11,7 +11,7 @@ from api.v1.schemas.modules import ModuleDBSchema, ModuleCreateSchema
 router = APIRouter(prefix=MODULES_ROUTER_PREFIX)
 
 
-@router.get('/', response_model=List[ModuleDBSchema])
+@router.get('', response_model=List[ModuleDBSchema])
 async def items(
         hobby_id: Optional[int] = None,
         db: AsyncSession = Depends(get_db)
