@@ -143,6 +143,7 @@ class HobbyScreen(MDScreen):
 class UnitCard(ButtonBehavior, MDBoxLayout):
     title = StringProperty()
     item_id = NumericProperty()
+    is_done = BooleanProperty(True)
 
 
 class ModuleScreen(MDScreen):
@@ -175,10 +176,21 @@ class ModuleScreen(MDScreen):
         self.ids.units.clear_widgets()
 
         for unit in sorted_units:
+            response = requests.get(
+                f'{WALKTHROUGHES_URL}',
+                params={
+                    "user_id": hotopia.auth_service.current_user.id,
+                    "unit_id": unit["id"]
+                }
+            )
+
+            is_done = True if response.json() else False
+
             self.ids.units.add_widget(
                 UnitCard(
                     item_id=unit["id"],
                     title=unit["name"],
+                    is_done=is_done,
                 )
             )
 
