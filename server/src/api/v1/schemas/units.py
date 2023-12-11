@@ -5,7 +5,6 @@ from server.src.api.v1.schemas.entity import EntityDBSchema
 
 class UnitBaseSchema(BaseModel):
     name: str
-    done: bool
     experience_amount: int
     duration: int
     content_filename: str

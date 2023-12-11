@@ -8,7 +8,6 @@ class Unit(Entity):
     __tablename__ = "units"
 
     name: Mapped[str]
-    done: Mapped[bool]
     experience_amount: Mapped[int]
     duration: Mapped[int]
     content_filename: Mapped[str]
