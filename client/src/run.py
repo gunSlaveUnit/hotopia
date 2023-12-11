@@ -144,7 +144,6 @@ class UnitCard(ButtonBehavior, MDBoxLayout):
     title = StringProperty()
     item_id = NumericProperty()
     is_done = BooleanProperty()
-    module_id = NumericProperty()
 
 
 class ModuleScreen(MDScreen):
@@ -192,7 +191,6 @@ class ModuleScreen(MDScreen):
                     is_done=is_done,
                     item_id=unit["id"],
                     title=unit["name"],
-                    module_id=unit["module_id"],
                 )
             )
 
@@ -201,6 +199,7 @@ class UnitScreen(MDScreen):
     title = StringProperty()
     item_id = NumericProperty()
     filename = StringProperty()
+    module_id = NumericProperty()
     is_unit_complete = BooleanProperty()
     complete_button_text = StringProperty()
 
@@ -222,6 +221,7 @@ class UnitScreen(MDScreen):
             self.item_id = unit["id"]
             self.title = unit["name"]
             self.filename = unit["content_filename"]
+            self.module_id = unit["module_id"]
 
     def set_complete_button_text(self, unit_id: int) -> None:
         self.related_walkthrough_id = self.get_related_walkthrough_id(unit_id)
