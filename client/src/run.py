@@ -143,7 +143,8 @@ class HobbyScreen(MDScreen):
 class UnitCard(ButtonBehavior, MDBoxLayout):
     title = StringProperty()
     item_id = NumericProperty()
-    is_done = BooleanProperty(True)
+    is_done = BooleanProperty()
+    module_id = NumericProperty()
 
 
 class ModuleScreen(MDScreen):
@@ -188,9 +189,10 @@ class ModuleScreen(MDScreen):
 
             self.ids.units.add_widget(
                 UnitCard(
+                    is_done=is_done,
                     item_id=unit["id"],
                     title=unit["name"],
-                    is_done=is_done,
+                    module_id=unit["module_id"],
                 )
             )
 
