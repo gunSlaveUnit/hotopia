@@ -236,7 +236,7 @@ RootLayout:
 
     canvas:
         Color:
-            rgb: app.theme_cls.bg_dark
+            rgb: app.theme_cls.primary_color if root.is_done else app.theme_cls.bg_dark
         RoundedRectangle:
             pos: self.pos
             size: self.size
