@@ -1,7 +1,8 @@
 from typing import List, Optional
 
-from fastapi import APIRouter, Depends
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi import APIRouter, Depends
 
 from core.utils.db import get_db
 from core.models.hobbies import Hobby
@@ -12,8 +13,16 @@ router = APIRouter(prefix=HOBBIES_ROUTER_PREFIX)
 
 
 @router.get('', response_model=List[HobbyDBSchema])
-async def items(db: AsyncSession = Depends(get_db)) -> List[Hobby]:
-    return [_ async for _ in Hobby.every(db)]
+async def items(
+        search: Optional[str] = None,
+        db: AsyncSession = Depends(get_db),
+) -> List[Hobby]:
+    query = select(Hobby)
+    if search:
+        query = query.where(Hobby.name.ilike(f'%{search}%'))
+
+    hobbies = await db.stream_scalars(query)
+    return [_ async for _ in hobbies]
 
 
 @router.get('/{item_id}', response_model=Optional[HobbyDBSchema])
