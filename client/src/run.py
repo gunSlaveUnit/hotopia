@@ -75,9 +75,14 @@ class ExploreScreen(MDScreen):
         extracted_hobbies = self.fetch_hobbies()
         self.map_hobbies(extracted_hobbies)
 
-    @staticmethod
-    def fetch_hobbies() -> List[dict]:
-        response = requests.get(HOBBIES_URL)
+    def fetch_hobbies(self) -> List[dict]:
+        search_name = self.ids.search_input.text
+
+        response = requests.get(
+            HOBBIES_URL,
+            params={"search": search_name if search_name != "" else None},
+        )
+
         if response.ok:
             return response.json()
 
