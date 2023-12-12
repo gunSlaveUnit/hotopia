@@ -137,8 +137,8 @@ RootLayout:
 
     MDLabel:
         adaptive_height: True
-        padding: app.default_margin
         text: self.parent.title
+        padding: app.default_margin
 
     AsyncImage:
         height: dp(220)
@@ -154,12 +154,21 @@ RootLayout:
 <ExploreScreen>:
     MDScrollView:
         MDBoxLayout:
-            id: hobbies
-
             adaptive_height: True
             orientation: "vertical"
             padding: app.default_margin
             spacing: app.default_margin
+
+            MDTextField:
+                id: search
+                mode: "fill"
+                icon_left: 'magnify'
+
+            MDBoxLayout:
+                id: hobbies
+
+                adaptive_height: True
+                orientation: "vertical"
 
 <ModuleCard>:
     adaptive_height: True
