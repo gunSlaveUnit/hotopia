@@ -2,13 +2,34 @@
     cols: 2
     adaptive_height: True
 
-    MDRectangleFlatButton:
+    MDRectangleFlatIconButton:
         text: "Home"
+        icon: "home"
         size_hint_x: 1.0
+        line_color: 0, 0, 0, 0
+        theme_icon_color: "Custom"
+        text_color: app.theme_cls.primary_color if self.parent.illuminated_button_index == 0 else app.theme_cls.text_color
+        icon_color: app.theme_cls.primary_color if self.parent.illuminated_button_index == 0 else app.theme_cls.text_color
 
-    MDRectangleFlatButton:
+        on_release:
+            self.parent.illuminated_button_index = 0
+            app.root.ids.screen_manager.current = "home_screen"
+            app.root.ids.screen_manager.transition.direction = "right"
+
+    MDRectangleFlatIconButton:
         text: "Explore"
+        icon: "compass"
         size_hint_x: 1.0
+        line_color: 0, 0, 0, 0
+        theme_icon_color: "Custom"
+        text_color: app.theme_cls.primary_color if self.parent.illuminated_button_index == 1 else app.theme_cls.text_color
+        icon_color: app.theme_cls.primary_color if self.parent.illuminated_button_index == 1 else app.theme_cls.text_color
+
+        on_release:
+            hotopia.root.ids.explore_screen.load()
+            self.parent.illuminated_button_index = 1
+            app.root.ids.screen_manager.current = "explore_screen"
+            app.root.ids.screen_manager.transition.direction = "left"
 
 RootLayout:
     orientation: "vertical"
