@@ -2,8 +2,6 @@ from typing import List, Optional
 
 import requests
 from kivy import Config
-from kivy.uix.behaviors import ButtonBehavior
-from kivy.properties import NumericProperty, StringProperty, ListProperty, BooleanProperty
 
 from api.v1.schemas.walkthroughes import WalkthroughCreateSchema
 from client.src.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL, UNITS_URL, WALKTHROUGHES_URL
@@ -16,9 +14,16 @@ from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.boxlayout import MDBoxLayout
+from kivy.uix.behaviors import ButtonBehavior
+from kivymd.uix.gridlayout import MDGridLayout
+from kivy.properties import NumericProperty, StringProperty, ListProperty, BooleanProperty
 
 from client.src.auth_service import AuthService
 from api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
+
+
+class Menu(MDGridLayout):
+    pass
 
 
 class RootLayout(MDBoxLayout):
