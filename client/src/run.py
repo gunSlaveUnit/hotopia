@@ -53,7 +53,7 @@ class SignInScreen(MDScreen):
             hotopia.root.add_menu()
             hotopia.auth_service.me()
             hotopia.root.ids.explore_screen.load()
-            hotopia.root.ids.screen_manager.current = "explore_screen"
+            hotopia.root.ids.screen_manager.current = "home_screen"
             hotopia.root.ids.screen_manager.transition.direction = "up"
 
 
@@ -73,8 +73,12 @@ class SignUpScreen(MDScreen):
             hotopia.root.add_menu()
             hotopia.auth_service.me()
             hotopia.root.ids.explore_screen.load()
-            hotopia.root.ids.screen_manager.current = "explore_screen"
+            hotopia.root.ids.screen_manager.current = "home_screen"
             hotopia.root.ids.screen_manager.transition.direction = "up"
+
+
+class HomeScreen(MDScreen):
+    pass
 
 
 class HobbyCard(ButtonBehavior, MDBoxLayout):
