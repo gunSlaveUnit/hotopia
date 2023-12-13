@@ -23,7 +23,7 @@ from api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
 
 
 class Menu(MDGridLayout):
-    pass
+    illuminated_button_index = NumericProperty(0)
 
 
 class RootLayout(MDBoxLayout):
