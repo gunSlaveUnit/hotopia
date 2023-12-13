@@ -12,6 +12,7 @@
         icon_color: app.theme_cls.primary_color if self.parent.illuminated_button_index == 0 else app.theme_cls.text_color
 
         on_release:
+            app.root.ids.home_screen.load()
             self.parent.illuminated_button_index = 0
             app.root.ids.screen_manager.current = "home_screen"
             app.root.ids.screen_manager.transition.direction = "right"
