@@ -19,4 +19,4 @@ class Walkthrough(Entity):
     user_id: Mapped[int] = mapped_column("user_id", ForeignKey("users.id"))
     unit_id: Mapped[int] = mapped_column("unit_id", ForeignKey("units.id"))
 
-    unit: Mapped[Unit] = relationship("Unit", back_populates="units")
+    unit: Mapped[Unit] = relationship("Unit", back_populates="walkthroughes")
