@@ -52,6 +52,7 @@ class SignInScreen(MDScreen):
         if hotopia.auth_service.sign_in(data).ok:
             hotopia.root.add_menu()
             hotopia.auth_service.me()
+            hotopia.root.ids.home_screen.load()
             hotopia.root.ids.screen_manager.current = "home_screen"
             hotopia.root.ids.screen_manager.transition.direction = "up"
 
@@ -71,6 +72,7 @@ class SignUpScreen(MDScreen):
         if hotopia.auth_service.sign_up(data).ok:
             hotopia.root.add_menu()
             hotopia.auth_service.me()
+            hotopia.root.ids.home_screen.load()
             hotopia.root.ids.screen_manager.current = "home_screen"
             hotopia.root.ids.screen_manager.transition.direction = "up"
 
