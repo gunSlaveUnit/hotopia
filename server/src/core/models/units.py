@@ -1,7 +1,14 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from core.models.entity import Entity
+
+if TYPE_CHECKING:
+    from core.models.modules import Module
 
 
 class Unit(Entity):
@@ -14,3 +21,5 @@ class Unit(Entity):
 
     module_id: Mapped[int] = mapped_column("module_id", ForeignKey("modules.id"))
     previous_unit_id: Mapped[int] = mapped_column("unit_id", ForeignKey("units.id"), nullable=True)
+
+    module: Mapped[Module] = relationship("Module", back_populates="units")
