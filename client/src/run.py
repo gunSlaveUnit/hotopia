@@ -27,7 +27,16 @@ class Menu(MDGridLayout):
 
 
 class RootLayout(MDBoxLayout):
-    pass
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.menu = Menu()
+
+    def add_menu(self):
+        self.add_widget(self.menu)
+
+    def remove_menu(self):
+        self.remove_widget(self.menu)
 
 
 class SignInScreen(MDScreen):
