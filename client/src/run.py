@@ -76,7 +76,8 @@ class SignUpScreen(MDScreen):
 
 
 class HomeScreen(MDScreen):
-    pass
+    def load(self) -> None:
+        pass
 
 
 class HobbyCard(ButtonBehavior, MDBoxLayout):
