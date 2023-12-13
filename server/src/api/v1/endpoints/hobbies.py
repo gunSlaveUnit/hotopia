@@ -15,6 +15,7 @@ router = APIRouter(prefix=HOBBIES_ROUTER_PREFIX)
 @router.get('', response_model=List[HobbyDBSchema])
 async def items(
         search: Optional[str] = None,
+        user_id: Optional[int] = None,
         db: AsyncSession = Depends(get_db),
 ) -> List[Hobby]:
     query = select(Hobby)
