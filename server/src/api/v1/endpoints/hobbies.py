@@ -5,7 +5,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import APIRouter, Depends
 
 from core.utils.db import get_db
+from core.models.units import Unit
 from core.models.hobbies import Hobby
+from core.models.modules import Module
+from core.models.walkthroughes import Walkthrough
 from server.src.settings import HOBBIES_ROUTER_PREFIX
 from server.src.api.v1.schemas.hobbies import HobbyDBSchema, HobbyCreateSchema
 
@@ -19,8 +22,12 @@ async def items(
         db: AsyncSession = Depends(get_db),
 ) -> List[Hobby]:
     query = select(Hobby)
+
     if search:
         query = query.where(Hobby.name.ilike(f'%{search}%'))
+
+    if user_id:
+        query.join(Module).join(Unit).join(Walkthrough).where(Walkthrough.user_id == user_id).distinct()
 
     hobbies = await db.stream_scalars(query)
     return [_ async for _ in hobbies]
