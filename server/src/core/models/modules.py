@@ -9,6 +9,7 @@ from core.models.entity import Entity
 
 if TYPE_CHECKING:
     from core.models.hobbies import Hobby
+    from core.models.units import Unit
 
 
 class Module(Entity):
@@ -21,3 +22,4 @@ class Module(Entity):
     previous_module_id: Mapped[int] = mapped_column("module_id", ForeignKey("modules.id"), nullable=True)
 
     hobby: Mapped[Hobby] = relationship("Hobby", back_populates="modules")
+    units: Mapped[list[Unit]] = relationship("Unit", back_populates="module")
