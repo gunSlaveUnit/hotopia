@@ -1,6 +1,13 @@
-from sqlalchemy.orm import Mapped
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+from sqlalchemy.orm import Mapped, relationship
 
 from core.models.entity import Entity
+
+if TYPE_CHECKING:
+    from core.models.modules import Module
 
 
 class Hobby(Entity):
@@ -10,3 +17,5 @@ class Hobby(Entity):
     short_description: Mapped[str]
     long_description: Mapped[str]
     card_picture_filename: Mapped[str]
+
+    modules: Mapped[list[Module]] = relationship("Module", back_populates="hobby")
