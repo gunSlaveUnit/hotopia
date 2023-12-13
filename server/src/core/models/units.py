@@ -9,6 +9,7 @@ from core.models.entity import Entity
 
 if TYPE_CHECKING:
     from core.models.modules import Module
+    from core.models.walkthroughes import Walkthrough
 
 
 class Unit(Entity):
@@ -23,3 +24,4 @@ class Unit(Entity):
     previous_unit_id: Mapped[int] = mapped_column("unit_id", ForeignKey("units.id"), nullable=True)
 
     module: Mapped[Module] = relationship("Module", back_populates="units")
+    walkthroughes: Mapped[list[Walkthrough]] = relationship("Walkthrough", back_populates="unit")
