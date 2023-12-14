@@ -84,16 +84,18 @@ class HomeHobbyCard(ButtonBehavior, MDBoxLayout):
 
 class HomeScreen(MDScreen):
     def load(self) -> None:
-        extracted_hobbies = self.fetch_hobbies()
+        extracted_hobbies = self.fetch_hobbies(
+            params={
+                "user_id": hotopia.auth_service.current_user.id,
+            }
+        )
         self.map_hobbies(extracted_hobbies)
 
     @staticmethod
-    def fetch_hobbies() -> List[dict]:
+    def fetch_hobbies(params) -> List[dict]:
         response = requests.get(
             HOBBIES_URL,
-            params={
-                "user_id": hotopia.auth_service.current_user.id,
-            },
+            params=params,
         )
 
         if response.ok:
