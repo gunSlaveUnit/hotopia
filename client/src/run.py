@@ -84,7 +84,31 @@ class HomeHobbyCard(ButtonBehavior, MDBoxLayout):
 
 class HomeScreen(MDScreen):
     def load(self) -> None:
-        pass
+        extracted_hobbies = self.fetch_hobbies()
+        self.map_hobbies(extracted_hobbies)
+
+    @staticmethod
+    def fetch_hobbies() -> List[dict]:
+        response = requests.get(
+            HOBBIES_URL,
+            params={
+                "user_id": hotopia.auth_service.current_user.id,
+            },
+        )
+
+        if response.ok:
+            return response.json()
+
+    def map_hobbies(self, extracted_hobbies: List[dict]) -> None:
+        self.ids.hobbies_in_progress.clear_widgets()
+
+        for hobby in extracted_hobbies:
+            self.ids.hobbies_in_progress.add_widget(
+                HomeHobbyCard(
+                    item_id=hobby["id"],
+                    title=hobby["name"],
+                )
+            )
 
 
 class HobbyCard(ButtonBehavior, MDBoxLayout):
