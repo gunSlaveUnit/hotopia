@@ -157,6 +157,27 @@ RootLayout:
                     app.root.ids.screen_manager.current = "sign_in_screen"
                     app.root.ids.screen_manager.transition.direction = "right"
 
+<HomeHobbyCard>:
+    adaptive_height: True
+    orientation: "vertical"
+
+    on_release:
+        app.root.ids.hobby_screen.load(self.item_id)
+        app.root.ids.screen_manager.current = "hobby_screen"
+        app.root.ids.screen_manager.transition.direction = "left"
+
+    canvas:
+        Color:
+            rgb: app.theme_cls.bg_dark
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+
+    MDLabel:
+        adaptive_height: True
+        text: self.parent.title
+        padding: app.default_margin
+
 <HomeScreen>:
     MDScrollView:
         MDBoxLayout:

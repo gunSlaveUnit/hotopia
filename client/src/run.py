@@ -77,6 +77,11 @@ class SignUpScreen(MDScreen):
             hotopia.root.ids.screen_manager.transition.direction = "up"
 
 
+class HomeHobbyCard(ButtonBehavior, MDBoxLayout):
+    item_id = NumericProperty()
+    title = StringProperty()
+
+
 class HomeScreen(MDScreen):
     def load(self) -> None:
         pass
