@@ -100,10 +100,10 @@ class HomeScreen(MDScreen):
             return response.json()
 
     def map_hobbies(self, extracted_hobbies: List[dict]) -> None:
-        self.ids.hobbies_in_progress.clear_widgets()
+        self.ids.in_progress_hobbies.clear_widgets()
 
         for hobby in extracted_hobbies:
-            self.ids.hobbies_in_progress.add_widget(
+            self.ids.in_progress_hobbies.add_widget(
                 HomeHobbyCard(
                     item_id=hobby["id"],
                     title=hobby["name"],
