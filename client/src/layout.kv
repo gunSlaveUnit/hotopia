@@ -295,6 +295,7 @@ RootLayout:
                     icon: 'arrow-left'
 
                     on_release:
+                        app.root.ids.explore_screen.load()
                         app.root.ids.screen_manager.current = "explore_screen"
                         app.root.ids.screen_manager.transition.direction = "right"
 
