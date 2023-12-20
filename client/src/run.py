@@ -1,3 +1,4 @@
+import re
 from typing import List, Optional
 
 import requests
@@ -14,6 +15,7 @@ from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.textfield import MDTextField
 from kivy.uix.behaviors import ButtonBehavior
 from kivymd.uix.gridlayout import MDGridLayout
 from kivy.properties import NumericProperty, StringProperty, ListProperty, BooleanProperty
@@ -37,6 +39,10 @@ class RootLayout(MDBoxLayout):
 
     def remove_menu(self):
         self.remove_widget(self.menu)
+
+
+class AccountTextField(MDTextField):
+    pass
 
 
 class SignInScreen(MDScreen):
