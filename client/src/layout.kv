@@ -70,28 +70,37 @@ RootLayout:
     MDBoxLayout:
         orientation: "vertical"
         padding: app.default_margin
+        spacing: app.default_margin
 
-        MDLabel:
-            text: "Account name"
+        MDBoxLayout:
+            adaptive_height: True
+            orientation: "vertical"
 
-        AccountTextField:
-            id: account_name_input
-            max_text_length: 255
-            on_text: self.validate()
-            helper_text_mode: "on_error"
-            helper_text: "Only English letters and digit. Starts with a letter"
+            MDLabel:
+                text: "Account name"
 
-        MDLabel:
-            text: "Password"
+            AccountTextField:
+                id: account_name_input
+                max_text_length: 255
+                on_text: self.validate()
+                helper_text_mode: "on_error"
+                helper_text: "Only English letters and digit. Starts with a letter"
 
-        PasswordTextField:
-            id: password_input
-            password: True
-            password_mask: '•'
-            max_text_length: 255
-            helper_text: "Not empty"
-            on_text: self.validate()
-            helper_text_mode: "on_error"
+        MDBoxLayout:
+            adaptive_height: True
+            orientation: "vertical"
+
+            MDLabel:
+                text: "Password"
+
+            PasswordTextField:
+                id: password_input
+                password: True
+                password_mask: '•'
+                max_text_length: 255
+                helper_text: "Not empty"
+                on_text: self.validate()
+                helper_text_mode: "on_error"
 
         MDRectangleFlatButton:
             text: "Log in"
