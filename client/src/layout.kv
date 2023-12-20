@@ -166,6 +166,9 @@ RootLayout:
 
             EmailTextField:
                 id: email_input
+                on_text: self.validate()
+                helper_text_mode: "on_error"
+                helper_text: "Not a valid email address"
 
         MDBoxLayout:
             adaptive_height: True
