@@ -78,6 +78,7 @@ RootLayout:
 
         MDLabel:
             text: "Hotopia"
+            halign: "justify"
             font_size: dp(40)
             adaptive_size: True
 
@@ -86,6 +87,7 @@ RootLayout:
             orientation: "vertical"
 
             MDLabel:
+                halign: "justify"
                 text: "Имя аккаунта"
 
             AccountTextField:
@@ -101,6 +103,7 @@ RootLayout:
 
             MDLabel:
                 text: "Пароль"
+                halign: "justify"
 
             PasswordTextField:
                 id: password_input
@@ -125,17 +128,19 @@ RootLayout:
             spacing: app.default_margin
 
             MDLabel:
+                halign: "justify"
                 text: "Нет аккаунта?"
 
             MDRectangleFlatButton:
                 size_hint_x: 1.0
-                text: "Создайте новый аккант"
+                text: "Создайте новый аккаунт"
 
                 on_release:
                     app.root.ids.screen_manager.current = "sign_up_screen"
                     app.root.ids.screen_manager.transition.direction = "left"
 
             MDLabel:
+                halign: "justify"
                 text: "Забыли пароль?"
 
             MDRectangleFlatButton:
@@ -155,6 +160,7 @@ RootLayout:
         MDLabel:
             text: "Hotopia"
             font_size: dp(40)
+            halign: "justify"
             adaptive_size: True
 
         MDBoxLayout:
@@ -162,6 +168,7 @@ RootLayout:
             orientation: "vertical"
 
             MDLabel:
+                halign: "justify"
                 text: "Электронная почта"
 
             EmailTextField:
@@ -175,6 +182,7 @@ RootLayout:
             orientation: "vertical"
 
             MDLabel:
+                halign: "justify"
                 text: "Имя аккаунта"
 
             AccountTextField:
@@ -190,6 +198,7 @@ RootLayout:
 
             MDLabel:
                 text: "Пароль"
+                halign: "justify"
 
             PasswordTextField:
                 id: password_input
@@ -213,7 +222,7 @@ RootLayout:
             spacing: app.default_margin
 
             MDLabel:
-                align: "center"
+                halign: "justify"
                 text: "Уже есть аккаунт?"
 
             MDRectangleFlatButton:
@@ -242,6 +251,7 @@ RootLayout:
             size: self.size
 
     MDLabel:
+        halign: "justify"
         adaptive_height: True
         text: self.parent.title
         padding: app.default_margin
@@ -255,6 +265,7 @@ RootLayout:
             spacing: app.default_margin
 
             MDLabel:
+                halign: "justify"
                 text: "Ваши хобби"
                 adaptive_height: True
 
@@ -280,6 +291,7 @@ RootLayout:
             size: self.size
 
     MDLabel:
+        halign: "justify"
         adaptive_height: True
         text: self.parent.title
         padding: app.default_margin
@@ -291,6 +303,7 @@ RootLayout:
         source: self.parent.picture_url
 
     MDLabel:
+        halign: "justify"
         adaptive_height: True
         padding: app.default_margin
         text: self.parent.short_description
@@ -339,10 +352,12 @@ RootLayout:
         spacing: app.default_margin
 
         MDLabel:
+            halign: "justify"
             adaptive_height: True
             text: self.parent.parent.title
 
         MDLabel:
+            halign: "justify"
             adaptive_height: True
             text: self.parent.parent.description
 
@@ -367,11 +382,13 @@ RootLayout:
                         app.root.ids.screen_manager.transition.direction = "right"
 
                 MDLabel:
-                    pos_hint: {"center_y": .5}
+                    halign: "justify"
                     adaptive_height: True
+                    pos_hint: {"center_y": .5}
                     text: self.parent.parent.parent.parent.title
 
             MDLabel:
+                halign: "justify"
                 adaptive_height: True
                 text: self.parent.parent.parent.long_description
 
@@ -398,6 +415,7 @@ RootLayout:
             size: self.size
 
     MDLabel:
+        halign: "justify"
         adaptive_height: True
         text: self.parent.title
         padding: app.default_margin
@@ -422,8 +440,9 @@ RootLayout:
                         app.root.ids.screen_manager.transition.direction = "right"
 
                 MDLabel:
-                    pos_hint: {"center_y": .5}
+                    halign: "justify"
                     adaptive_height: True
+                    pos_hint: {"center_y": .5}
                     text: self.parent.parent.parent.parent.title
 
             MDBoxLayout:
@@ -452,8 +471,9 @@ RootLayout:
                         app.root.ids.screen_manager.transition.direction = "right"
 
                 MDLabel:
-                    pos_hint: {"center_y": .5}
+                    halign: "justify"
                     adaptive_height: True
+                    pos_hint: {"center_y": .5}
                     text: self.parent.parent.parent.parent.title
 
             MDBoxLayout:
