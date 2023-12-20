@@ -74,8 +74,9 @@ RootLayout:
         MDLabel:
             text: "Account name"
 
-        MDTextField:
+        AccountTextField:
             id: account_name_input
+            on_text: self.validate()
 
         MDLabel:
             text: "Password"
