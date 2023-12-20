@@ -41,6 +41,13 @@ class RootLayout(MDBoxLayout):
         self.remove_widget(self.menu)
 
 
+class EmailTextField(MDTextField):
+    def validate(self) -> bool:
+        pattern = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+        self.error = False if re.match(pattern, self.text) else True
+        return self.error
+
+
 class AccountTextField(MDTextField):
     def validate(self) -> bool:
         self.error = False if re.match("^[a-zA-Z0-9]+$", self.text) else True
