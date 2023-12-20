@@ -42,7 +42,9 @@ class RootLayout(MDBoxLayout):
 
 
 class AccountTextField(MDTextField):
-    pass
+    def validate(self) -> bool:
+        self.error = False if re.match("^[a-zA-Z0-9]+$", self.text) else True
+        return self.error
 
 
 class SignInScreen(MDScreen):
