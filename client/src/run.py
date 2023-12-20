@@ -62,8 +62,8 @@ class PasswordTextField(MDTextField):
 
 class SignInScreen(MDScreen):
     def sign_in(self):
-        account_name = self.ids.sign_in_account_name_input.text
-        password = self.ids.sign_in_password_input.text
+        account_name = self.ids.account_name_input.text
+        password = self.ids.password_input.text
 
         data = UserSignInSchema(
             account_name=account_name,
