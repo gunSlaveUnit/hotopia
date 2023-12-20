@@ -76,6 +76,7 @@ RootLayout:
 
         AccountTextField:
             id: account_name_input
+            max_text_length: 255
             on_text: self.validate()
             helper_text_mode: "on_error"
             helper_text: "Only English letters and digit. Starts with a letter"
@@ -83,10 +84,14 @@ RootLayout:
         MDLabel:
             text: "Password"
 
-        MDTextField:
+        PasswordTextField:
             id: password_input
             password: True
             password_mask: '•'
+            max_text_length: 255
+            helper_text: "Not empty"
+            on_text: self.validate()
+            helper_text_mode: "on_error"
 
         MDRectangleFlatButton:
             text: "Log in"
