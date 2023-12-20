@@ -27,7 +27,7 @@ async def items(
         query = query.where(Hobby.name.ilike(f'%{search}%'))
 
     if user_id:
-        query.join(Module).join(Unit).join(Walkthrough).where(Walkthrough.user_id == user_id).distinct()
+        query = query.join(Module).join(Unit).join(Walkthrough).where(Walkthrough.user_id == user_id).distinct()
 
     hobbies = await db.stream_scalars(query)
     return [_ async for _ in hobbies]
