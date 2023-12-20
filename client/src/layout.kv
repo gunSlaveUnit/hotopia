@@ -191,10 +191,14 @@ RootLayout:
             MDLabel:
                 text: "Password"
 
-            MDTextField:
+            PasswordTextField:
                 id: password_input
                 password: True
                 password_mask: '•'
+                max_text_length: 255
+                helper_text: "Not empty"
+                on_text: self.validate()
+                helper_text_mode: "on_error"
 
         MDRectangleFlatButton:
             size_hint_x: 1.0
