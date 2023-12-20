@@ -3,7 +3,7 @@
     adaptive_height: True
 
     MDRectangleFlatIconButton:
-        text: "Home"
+        text: "Главная"
         icon: "home"
         size_hint_x: 1.0
         line_color: 0, 0, 0, 0
@@ -18,7 +18,7 @@
             app.root.ids.screen_manager.transition.direction = "right"
 
     MDRectangleFlatIconButton:
-        text: "Explore"
+        text: "Обзор"
         icon: "compass"
         size_hint_x: 1.0
         line_color: 0, 0, 0, 0
@@ -86,33 +86,33 @@ RootLayout:
             orientation: "vertical"
 
             MDLabel:
-                text: "Account name"
+                text: "Имя аккаунта"
 
             AccountTextField:
                 id: account_name_input
                 max_text_length: 255
                 on_text: self.validate()
                 helper_text_mode: "on_error"
-                helper_text: "Only English letters and digit. Starts with a letter"
+                helper_text: "Латинские буквы и цифры. Начинается с буквы"
 
         MDBoxLayout:
             adaptive_height: True
             orientation: "vertical"
 
             MDLabel:
-                text: "Password"
+                text: "Пароль"
 
             PasswordTextField:
                 id: password_input
                 password: True
                 password_mask: '•'
                 max_text_length: 255
-                helper_text: "Not empty"
+                helper_text: "Обязателен"
                 on_text: self.validate()
                 helper_text_mode: "on_error"
 
         MDRectangleFlatButton:
-            text: "Log in"
+            text: "Войти"
             size_hint_x: 1.0
 
             on_release:
@@ -125,22 +125,22 @@ RootLayout:
             spacing: app.default_margin
 
             MDLabel:
-                text: "Don’t have an account?"
+                text: "Нет аккаунта?"
 
             MDRectangleFlatButton:
                 size_hint_x: 1.0
-                text: "Create a new account"
+                text: "Создайте новый аккант"
 
                 on_release:
                     app.root.ids.screen_manager.current = "sign_up_screen"
                     app.root.ids.screen_manager.transition.direction = "left"
 
             MDLabel:
-                text: "Forgot your password?"
+                text: "Забыли пароль?"
 
             MDRectangleFlatButton:
                 size_hint_x: 1.0
-                text: "Reset password"
+                text: "Сбросить пароль"
 
 <SignUpScreen>:
     MDBoxLayout:
@@ -162,47 +162,47 @@ RootLayout:
             orientation: "vertical"
 
             MDLabel:
-                text: "Email address"
+                text: "Электронная почта"
 
             EmailTextField:
                 id: email_input
                 on_text: self.validate()
                 helper_text_mode: "on_error"
-                helper_text: "Not a valid email address"
+                helper_text: "Неверный адрес электронной почты"
 
         MDBoxLayout:
             adaptive_height: True
             orientation: "vertical"
 
             MDLabel:
-                text: "Account name"
+                text: "Имя аккаунта"
 
             AccountTextField:
                 id: account_name_input
                 max_text_length: 255
                 on_text: self.validate()
                 helper_text_mode: "on_error"
-                helper_text: "Only English letters and digit. Starts with a letter"
+                helper_text: "Латинские буквы и цифры. Начинается с буквы"
 
         MDBoxLayout:
             adaptive_height: True
             orientation: "vertical"
 
             MDLabel:
-                text: "Password"
+                text: "Пароль"
 
             PasswordTextField:
                 id: password_input
                 password: True
                 password_mask: '•'
                 max_text_length: 255
-                helper_text: "Not empty"
+                helper_text: "Обязателен"
                 on_text: self.validate()
                 helper_text_mode: "on_error"
 
         MDRectangleFlatButton:
             size_hint_x: 1.0
-            text: "Create a new account"
+            text: "Создать новый аккаунт"
 
             on_release:
                 app.root.ids.sign_up_screen.sign_up()
@@ -214,11 +214,11 @@ RootLayout:
 
             MDLabel:
                 align: "center"
-                text: "Already have an account?"
+                text: "Уже есть аккаунт?"
 
             MDRectangleFlatButton:
                 size_hint_x: 1.0
-                text: "Login to existing account"
+                text: "Войдите в ваш аккаунт"
 
                 on_release:
                     app.root.ids.screen_manager.current = "sign_in_screen"
@@ -255,20 +255,11 @@ RootLayout:
             spacing: app.default_margin
 
             MDLabel:
-                text: "In progress"
+                text: "Ваши хобби"
                 adaptive_height: True
 
             MDBoxLayout:
                 id: in_progress_hobbies
-                adaptive_height: True
-                orientation: "vertical"
-
-            MDLabel:
-                text: "Latest"
-                adaptive_height: True
-
-            MDBoxLayout:
-                id: latest_hobbies
                 adaptive_height: True
                 orientation: "vertical"
 

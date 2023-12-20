@@ -306,10 +306,10 @@ class UnitScreen(MDScreen):
 
         if self.related_walkthrough_id:
             self.is_unit_complete = True
-            self.complete_button_text = "Mark as undone"
+            self.complete_button_text = "Отметить как непройденный"
         else:
             self.is_unit_complete = False
-            self.complete_button_text = "Mark as done"
+            self.complete_button_text = "Отметить как пройденный"
 
     @staticmethod
     def get_related_walkthrough_id(unit_id: int) -> Optional[int]:
