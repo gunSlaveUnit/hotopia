@@ -47,6 +47,12 @@ class AccountTextField(MDTextField):
         return self.error
 
 
+class PasswordTextField(MDTextField):
+    def validate(self) -> bool:
+        self.error = self.text == ''
+        return self.error
+
+
 class SignInScreen(MDScreen):
     def sign_in(self):
         account_name = self.ids.account_name_input.text
