@@ -5,7 +5,7 @@ from requests import Session
 
 from core.models.users import User
 from common.src.api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
-from common.src.settings import SIGN_UP_URL, SIGN_IN_URL, SIGN_OUT_URL, ME_URL
+from common.src.core.settings import SIGN_UP_URL, SIGN_IN_URL, SIGN_OUT_URL, ME_URL
 
 
 class AuthService:

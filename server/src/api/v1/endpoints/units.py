@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.utils.db import get_db
 from core.models.units import Unit
-from common.src.settings import UNITS_ROUTER_PREFIX
+from common.src.core.settings import UNITS_ROUTER_PREFIX
 from common.src.api.v1.schemas.units import UnitDBSchema, UnitCreateSchema
 
 router = APIRouter(prefix=UNITS_ROUTER_PREFIX)

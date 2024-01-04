@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from common.src.settings import API_VERSION_1_PREFIX
+from common.src.core.settings import API_VERSION_1_PREFIX
 from server.src.api.v1.endpoints.auth import router as auth_router
 from server.src.api.v1.endpoints.units import router as units_router
 from server.src.api.v1.endpoints.modules import router as modules_router
