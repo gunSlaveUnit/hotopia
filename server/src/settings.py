@@ -4,6 +4,7 @@ DEBUG = True
 
 HOST = '127.0.0.1'
 PORT = 8000
+RELOAD = True
 
 API_PREFIX = '/api'
 MEDIA_PREFIX = '/media'
