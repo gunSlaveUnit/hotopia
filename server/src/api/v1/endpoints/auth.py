@@ -13,7 +13,7 @@ from core.models.users import User
 from core.utils.db import get_db, get_session_storage
 from server.src.core.utils.crypt import get_password_hash
 from core.utils.auth import authenticate_user, get_current_user
-from api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
+from common.src.api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
 from common.src.settings import AUTH_ROUTER_PREFIX, SIGN_UP_URL, SIGN_IN_URL, SIGN_OUT_URL, ME_URL
 
 router = APIRouter(prefix=AUTH_ROUTER_PREFIX)
