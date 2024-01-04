@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from starlette.staticfiles import StaticFiles
 
+from settings import DEBUG, MEDIA_PATH
+from common.src.settings import MEDIA_PREFIX
 from core.utils.db import create as create_db
-from settings import DEBUG, MEDIA_PATH, MEDIA_PREFIX
 from server.src.api.v1.api import router as api_v1_router
 
 app = FastAPI(debug=DEBUG)

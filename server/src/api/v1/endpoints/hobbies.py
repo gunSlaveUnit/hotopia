@@ -9,7 +9,7 @@ from core.models.units import Unit
 from core.models.hobbies import Hobby
 from core.models.modules import Module
 from core.models.walkthroughes import Walkthrough
-from server.src.settings import HOBBIES_ROUTER_PREFIX
+from common.src.settings import HOBBIES_ROUTER_PREFIX
 from server.src.api.v1.schemas.hobbies import HobbyDBSchema, HobbyCreateSchema
 
 router = APIRouter(prefix=HOBBIES_ROUTER_PREFIX)

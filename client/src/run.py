@@ -5,7 +5,7 @@ import requests
 from kivy import Config
 
 from api.v1.schemas.walkthroughes import WalkthroughCreateSchema
-from client.src.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL, UNITS_URL, WALKTHROUGHES_URL
+from common.src.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL, UNITS_URL, WALKTHROUGHES_URL
 
 # Don't move it from here.
 Config.set('graphics', 'width', '360')
