@@ -4,9 +4,9 @@ from fastapi import HTTPException, Depends, Cookie
 from sqlalchemy.ext.asyncio import AsyncSession
 from starlette import status
 
-from core.models.users import User
-from core.utils.crypt import crypt_context
-from core.utils.db import get_db, get_session_storage
+from server.src.core.models.users import User
+from server.src.core.utils.crypt import crypt_context
+from server.src.core.utils.db import get_db, get_session_storage
 
 
 async def verify_password(plain_password, hashed_password) -> bool:

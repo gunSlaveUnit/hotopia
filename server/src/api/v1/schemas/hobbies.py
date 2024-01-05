@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from common.src.api.v1.schemas.entity import EntityDBSchema
+from server.src.api.v1.schemas.entity import EntityDBSchema
 
 
 class HobbyBaseSchema(BaseModel):

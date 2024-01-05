@@ -4,10 +4,10 @@ from typing import TYPE_CHECKING
 
 from sqlalchemy.orm import Mapped, relationship
 
-from core.models.entity import Entity
+from server.src.core.models.entity import Entity
 
 if TYPE_CHECKING:
-    from core.models.modules import Module
+    from server.src.core.models.modules import Module
 
 
 class Hobby(Entity):

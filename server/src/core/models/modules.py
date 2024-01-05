@@ -5,11 +5,11 @@ from typing import TYPE_CHECKING
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from core.models.entity import Entity
+from server.src.core.models.entity import Entity
 
 if TYPE_CHECKING:
-    from core.models.hobbies import Hobby
-    from core.models.units import Unit
+    from server.src.core.models.units import Unit
+    from server.src.core.models.hobbies import Hobby
 
 
 class Module(Entity):

@@ -5,7 +5,7 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import Mapped, mapped_column
 
-from core.utils.db import Base
+from server.src.core.utils.db import Base
 
 
 class Entity(Base):

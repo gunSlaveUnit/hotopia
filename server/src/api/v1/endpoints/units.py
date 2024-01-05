@@ -3,10 +3,10 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.utils.db import get_db
-from core.models.units import Unit
-from common.src.core.settings import UNITS_ROUTER_PREFIX
-from common.src.api.v1.schemas.units import UnitDBSchema, UnitCreateSchema
+from server.src.core.utils.db import get_db
+from server.src.core.models.units import Unit
+from server.src.core.settings import UNITS_ROUTER_PREFIX
+from server.src.api.v1.schemas.units import UnitDBSchema, UnitCreateSchema
 
 router = APIRouter(prefix=UNITS_ROUTER_PREFIX)
 

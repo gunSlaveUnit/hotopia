@@ -3,10 +3,10 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.utils.db import get_db
-from core.models.walkthroughes import Walkthrough
-from common.src.core.settings import WALKTHROUGHES_ROUTER_PREFIX
-from common.src.api.v1.schemas.walkthroughes import WalkthroughDBSchema, WalkthroughCreateSchema
+from server.src.core.utils.db import get_db
+from server.src.core.models.walkthroughes import Walkthrough
+from server.src.core.settings import WALKTHROUGHES_ROUTER_PREFIX
+from server.src.api.v1.schemas.walkthroughes import WalkthroughDBSchema, WalkthroughCreateSchema
 
 router = APIRouter(prefix=WALKTHROUGHES_ROUTER_PREFIX)
 
