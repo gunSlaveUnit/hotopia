@@ -2,8 +2,7 @@ from pathlib import Path
 
 from dotenv import dotenv_values
 
-BASE_PATH = Path(__file__).resolve().parent
-
+BASE_PATH = Path(__file__).resolve().parent.parent.parent
 
 CONFIG = dotenv_values(BASE_PATH / '.env')
 

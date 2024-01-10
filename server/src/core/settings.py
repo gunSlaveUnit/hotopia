@@ -1,4 +1,4 @@
-from config import *
+from common.core.settings import *
 
 MEDIA_PATH = BASE_PATH / 'media'
 
