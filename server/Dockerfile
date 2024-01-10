@@ -10,6 +10,7 @@ WORKDIR /usr/src/hotopia/server/
 RUN mkdir -p /usr/src/hotopia/media/
 
 COPY . /usr/src/hotopia/server/
+COPY ../config.py /usr/src/hotopia/
 
 RUN python3 -m pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
