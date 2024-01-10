@@ -1,4 +1,4 @@
-from common.core.settings import *
+from common.src.core.settings import *
 
 SERVER_URL = f"http://{CONFIG['HOST']}:{CONFIG['PORT']}"
 MEDIA_URL = f'{SERVER_URL}{MEDIA_PREFIX}'

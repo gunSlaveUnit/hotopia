@@ -4,7 +4,7 @@ from typing import List, Optional
 import requests
 from kivy import Config
 
-from server.src.api.v1.schemas.walkthroughes import WalkthroughCreateSchema
+from common.src.api.v1.schemas.walkthroughes import WalkthroughCreateSchema
 from common.src.core.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL, UNITS_URL, WALKTHROUGHES_URL
 
 # Don't move it from here.
@@ -21,7 +21,7 @@ from kivymd.uix.gridlayout import MDGridLayout
 from kivy.properties import NumericProperty, StringProperty, ListProperty, BooleanProperty
 
 from client.src.auth_service import AuthService
-from server.src.api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
+from common.src.api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
 
 
 class Menu(MDGridLayout):

@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from server.src.core.utils.db import get_db
 from server.src.core.models.modules import Module
 from server.src.core.settings import MODULES_ROUTER_PREFIX
-from server.src.api.v1.schemas.modules import ModuleDBSchema, ModuleCreateSchema
+from common.src.api.v1.schemas.modules import ModuleDBSchema, ModuleCreateSchema
 
 router = APIRouter(prefix=MODULES_ROUTER_PREFIX)
 
