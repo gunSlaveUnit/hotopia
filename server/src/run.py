@@ -1,6 +1,12 @@
 import uvicorn
 
-from server.src.core.settings import HOST, PORT, RELOAD
+from server.src.core.settings import CONFIG
+
 
 if __name__ == '__main__':
-    uvicorn.run("app:app", host=HOST, port=PORT, reload=RELOAD)
+    uvicorn.run(
+        "app:app",
+        host=CONFIG["HOST"],
+        port=int(CONFIG["PORT"]),
+        reload=bool(CONFIG["RELOAD"]),
+    )
