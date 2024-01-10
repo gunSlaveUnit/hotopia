@@ -4,9 +4,6 @@ from typing import List, Optional
 import requests
 from kivy import Config
 
-from common.src.api.v1.schemas.walkthroughes import WalkthroughCreateSchema
-from common.src.core.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL, UNITS_URL, WALKTHROUGHES_URL
-
 # Don't move it from here.
 Config.set('graphics', 'width', '360')
 Config.set('graphics', 'height', '800')
@@ -21,7 +18,9 @@ from kivymd.uix.gridlayout import MDGridLayout
 from kivy.properties import NumericProperty, StringProperty, ListProperty, BooleanProperty
 
 from client.src.auth_service import AuthService
+from common.src.api.v1.schemas.walkthroughes import WalkthroughCreateSchema
 from common.src.api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
+from client.src.core.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL, UNITS_URL, WALKTHROUGHES_URL
 
 
 class Menu(MDGridLayout):
