@@ -1,5 +1,7 @@
 from common.src.core.settings import *
 
+CLIENT_ROOT = BASE_PATH / 'client'
+
 SERVER_URL = f"http://{CONFIG['HOST']}:{CONFIG['PORT']}"
 MEDIA_URL = f'{SERVER_URL}{MEDIA_PREFIX}'
 API_V1_URL = f'{SERVER_URL}{API_VERSION_1_PREFIX}'
