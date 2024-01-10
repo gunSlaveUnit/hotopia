@@ -2,9 +2,9 @@ import redis
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncAttrs, AsyncSession, AsyncEngine
 
-engine: AsyncEngine = create_async_engine(
-    "postgresql+asyncpg://postgres:postgres@localhost:5432/hotopia"
-)
+from server.src.core.settings import CONFIG
+
+engine: AsyncEngine = create_async_engine(CONFIG['DB_URL'])
 
 
 class Base(DeclarativeBase, AsyncAttrs):
