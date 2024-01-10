@@ -74,7 +74,7 @@ RootLayout:
 
         AsyncImage:
             fit_mode: "contain"
-            source: "logo.png"
+            source: str(app.resources_path / "logo.png")
 
         MDLabel:
             text: "Hotopia"
@@ -155,7 +155,7 @@ RootLayout:
 
         AsyncImage:
             fit_mode: "contain"
-            source: "logo.png"
+            source: str(app.resources_path / "logo.png")
 
         MDLabel:
             text: "Hotopia"

@@ -20,7 +20,7 @@ from kivy.properties import NumericProperty, StringProperty, ListProperty, Boole
 from client.src.auth_service import AuthService
 from common.src.api.v1.schemas.walkthroughes import WalkthroughCreateSchema
 from common.src.api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
-from client.src.core.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL, UNITS_URL, WALKTHROUGHES_URL
+from client.src.core.settings import HOBBIES_URL, MEDIA_URL, MODULES_URL, UNITS_URL, WALKTHROUGHES_URL, RESOURCES_PATH
 
 
 class Menu(MDGridLayout):
@@ -362,6 +362,7 @@ class Hotopia(MDApp):
         self.theme_cls.primary_palette = "Green"
 
         self.default_margin = 16
+        self.resources_path = RESOURCES_PATH
 
     def build(self):
         root_layout = Builder.load_file("layout.kv")
