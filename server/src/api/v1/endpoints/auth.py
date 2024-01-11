@@ -13,7 +13,7 @@ from server.src.core.settings import SESSION_TTL
 from server.src.core.utils.crypt import get_password_hash
 from server.src.core.utils.db import get_db, get_session_storage
 from server.src.core.utils.auth import authenticate_user, get_current_user
-from common.src.api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
+from common.src.api.v1.schemas.users import UserSignUpSchema, UserSignInSchema, UserDBSchema
 from server.src.core.settings import AUTH_ROUTER_PREFIX, SIGN_UP_URL, SIGN_IN_URL, SIGN_OUT_URL, ME_URL
 
 router = APIRouter(prefix=AUTH_ROUTER_PREFIX)
@@ -108,6 +108,6 @@ async def sign_out(
         )
 
 
-@router.get(ME_URL)
-async def me(current_user: User = Depends(get_current_user)):
+@router.get(ME_URL, response_model=UserDBSchema)
+async def me(current_user: User = Depends(get_current_user)) -> User:
     return current_user
