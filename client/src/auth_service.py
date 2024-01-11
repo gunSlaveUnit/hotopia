@@ -3,15 +3,15 @@ from typing import Union, Optional
 import requests
 from requests import Session
 
-from common.src.api.v1.schemas.users import UserSignUpSchema, UserSignInSchema
 from common.src.core.settings import SIGN_UP_URL, SIGN_IN_URL, SIGN_OUT_URL, ME_URL
+from common.src.api.v1.schemas.users import UserSignUpSchema, UserSignInSchema, UserDBSchema
 
 
 class AuthService:
     def __init__(self):
         super().__init__()
 
-        self.current_user: Optional[User] = None
+        self.current_user: Optional[UserDBSchema] = None
         self.authorized_session: Optional[Session] = None
 
     def _user_access(self, url: str, data: Union[UserSignUpSchema, UserSignInSchema]):
@@ -45,4 +45,4 @@ class AuthService:
         response = self.authorized_session.get(ME_URL)
 
         if response.ok:
-            self.current_user = User(**response.json())
+            self.current_user = UserDBSchema(**response.json())
