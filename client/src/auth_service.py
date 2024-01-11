@@ -3,7 +3,7 @@ from typing import Union, Optional
 import requests
 from requests import Session
 
-from common.src.core.settings import SIGN_UP_URL, SIGN_IN_URL, SIGN_OUT_URL, ME_URL
+from client.src.core.settings import SIGN_UP_URL, SIGN_IN_URL, SIGN_OUT_URL, ME_URL
 from common.src.api.v1.schemas.users import UserSignUpSchema, UserSignInSchema, UserDBSchema
 
 
