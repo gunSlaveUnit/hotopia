@@ -1,14 +1,9 @@
 import redis
-from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncAttrs, AsyncSession, AsyncEngine
 
 from server.src.core.settings import CONFIG
 
 engine: AsyncEngine = create_async_engine(CONFIG['DB_URL'])
-
-
-class Base(DeclarativeBase, AsyncAttrs):
-    pass
 
 
 async def get_db() -> AsyncSession:
