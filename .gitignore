@@ -3,3 +3,4 @@ data/
 **/venv/
 **/__pycache__/
 server/media/
+*.sqlite3
