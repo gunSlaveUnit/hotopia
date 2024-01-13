@@ -40,6 +40,11 @@ RELOAD=True
 DB_URL=sqlite+aiosqlite:///hotopia.sqlite3
 ```
 
+Run migrations:
+```
+alembic upgrade head
+```
+
 Run both parts:
 ```
 python server/src/run.py
