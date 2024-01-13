@@ -31,9 +31,9 @@ pip install -r server/requirements.txt
 pip install -r client/requirements.txt
 ```
 
-Configure your .env file. Default is:
+Configure your .env file. For example:
 ```
-HOST=127.0.0.1
+HOST=0.0.0.0
 PORT=8000
 DEBUG=True
 RELOAD=True
