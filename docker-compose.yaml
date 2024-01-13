@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  session-storage:
+    image: redis
+    container_name: session-storage
+  db:
+    image: postgres
+    container_name: db
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_NAME=hotopia
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  server:
+    build: .
+    container_name: server
+    depends_on:
+      - session-storage
+      - db
+    ports:
+      - "8000:8000"
+    command: sh -c "alembic upgrade head && python server/src/run.py"
