@@ -1,7 +1,7 @@
 ![Client interface](client/collage.png)
 
 # HOTOPIA
-"Hobby utopia", educational project, hobby search application.
+"Hobby utopia", hobby search application.
 
 This project contains two main parts:
 - Client - a mobile application, build with Kivy and KivyMD
