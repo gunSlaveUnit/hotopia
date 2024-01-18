@@ -43,7 +43,9 @@ pip install -r client/requirements.txt
 
 Run migrations:
 ```
+cd server/
 alembic upgrade head
+cd ..
 ```
 
 Run both parts:
