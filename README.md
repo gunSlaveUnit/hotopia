@@ -1,7 +1,7 @@
 ![Client interface](client/collage.png)
 
 # HOTOPIA
-"Hobby utopia", educational project, hobby search application.
+"Hobby utopia", hobby search application.
 
 This project contains two main parts:
 - Client - a mobile application, build with Kivy and KivyMD
@@ -15,6 +15,7 @@ Python version - 3.12.
 So, clone this repo:
 ```
 git clone https://github.com/gunslaveunit/hotopia
+cd hotopia/
 ```
 Add path/to/a/project/hotopia to system variables, so Python can look for common, server and client.
 
@@ -30,7 +31,6 @@ DB_URL=sqlite+aiosqlite:///hotopia.sqlite3
 ### Manual
 Create virtual environment:
 ```
-cd hotopia/
 python -m venv venv
 source venv/bin/activate # or without "source" for Windows
 ```
