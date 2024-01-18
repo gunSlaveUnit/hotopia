@@ -10,7 +10,6 @@ WORKDIR /usr/src/hotopia/
 
 COPY server/ ./server/
 COPY common/ ./common/
-COPY alembic.ini .
 COPY .env .
 
 RUN python3 -m pip install --upgrade pip
