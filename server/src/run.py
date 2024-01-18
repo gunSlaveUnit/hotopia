@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import uvicorn
 
 from server.src.core.settings import CONFIG
