@@ -25,7 +25,7 @@ HOST=0.0.0.0
 PORT=8000
 DEBUG=True
 RELOAD=True
-DB_URL=sqlite+aiosqlite:///hotopia.sqlite3
+DB_URL=sqlite+aiosqlite:///hotopia.sqlite3 # or for PostgreSQL: postgresql+asyncpg://postgres:postgres@localhost:5432/hotopia
 ```
 
 ### Manual
