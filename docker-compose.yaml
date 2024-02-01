@@ -21,4 +21,4 @@ services:
       - db
     ports:
       - "8000:8000"
-    command: sh -c "alembic upgrade head && python server/src/run.py"
+    command: sh -c "alembic -c server/alembic.ini upgrade head && python server/src/run.py"
